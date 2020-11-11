@@ -1,6 +1,14 @@
 import React from 'react';
 
-import { Container, Header, Content, FilterContainer } from './syles';
+import {
+  Container,
+  Header,
+  Content,
+  FilterContainer,
+  PatientsData,
+  RegionPeriod,
+  StatisticalModels,
+} from './styles';
 
 const Dashboard: React.FC = () => {
   return (
@@ -16,7 +24,73 @@ const Dashboard: React.FC = () => {
       <Content>
         <span>Utilize os filtros para a construção do gráfico.</span>
 
-        {/* <FilterContainer>Teste</FilterContainer> */}
+        <FilterContainer>
+          <PatientsData>
+            <p>Dados dos pacientes</p>
+            <hr />
+            <div id="gender">
+              <label htmlFor="masculino">
+                <input id="masculino" name="genero" type="radio" />
+                Masculino
+              </label>
+              <label htmlFor="feminino">
+                <input id="feminino" name="genero" type="radio" />
+                Feminino
+              </label>
+            </div>
+            <div>
+              <label htmlFor="gestante">
+                <input id="gestante" type="checkbox" />
+                Gestante
+              </label>
+              <label htmlFor="lactante">
+                <input id="lactante" type="checkbox" />
+                Lactante
+              </label>
+              <label htmlFor="bolsa_familia">
+                <input id="bolsa_familia" type="checkbox" />
+                Bolsa Família
+              </label>
+            </div>
+            <div>
+              <div>
+                Raça/Cor
+                <input placeholder="Selecione" />
+              </div>
+              <div>
+                Etnia
+                <input placeholder="Selecione" />
+              </div>
+            </div>
+            <div>
+              Idade
+              <input placeholder="De" />
+              <input placeholder="Até" />
+            </div>
+            <div>
+              Altura
+              <input placeholder="De" />
+              <input placeholder="Até" />
+            </div>
+          </PatientsData>
+
+          <RegionPeriod>
+            Região e período
+            <hr />
+            Localidade
+            <input placeholder="Brasil" />
+            Unidade
+            <input placeholder="Selecione a unidade" />
+            Ano
+            <input placeholder="Selecione a unidade" />
+          </RegionPeriod>
+
+          <StatisticalModels>
+            Modelos Estatísticos
+            <hr />
+            <input placeholder="Selecionar" />
+          </StatisticalModels>
+        </FilterContainer>
       </Content>
     </Container>
   );
