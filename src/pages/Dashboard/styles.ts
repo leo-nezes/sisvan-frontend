@@ -13,12 +13,12 @@ export const Header = styled.header`
 
   background: #008d4c;
 
-  > div {
+  div {
     font-size: 72px;
     color: #f6f4f8;
   }
 
-  > div {
+  div {
     display: flex;
     flex-direction: column;
     margin: 0 8px;
@@ -40,7 +40,6 @@ export const Content = styled.div`
 
   span {
     font-size: 16px;
-    color: #666360;
   }
 `;
 
@@ -58,25 +57,45 @@ export const FilterContainer = styled.aside`
 export const PatientsData = styled.section`
   p,
   hr {
-    color: #404040;
     font-size: 16px;
     font-weight: 700;
   }
 
+  label,
   input {
+    margin-right: 8px;
+  }
+
+  input[type='radio'] {
     width: 16px;
     height: 16px;
 
-    margin-right: 12px;
+    /* margin-right: 8px; */
   }
 
   div {
     margin-top: 8px;
-    display: flex;
-    justify-content: space-between;
+  }
 
+  #genero {
     label:first-child {
       margin-right: 75px;
+    }
+  }
+
+  #opcoes_maes {
+    input[type='checkbox'] {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  #caracteristicas {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      margin-top: 8px;
     }
   }
 `;

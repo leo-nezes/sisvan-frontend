@@ -28,7 +28,7 @@ const Dashboard: React.FC = () => {
           <PatientsData>
             <p>Dados dos pacientes</p>
             <hr />
-            <div id="gender">
+            <div id="genero">
               <label htmlFor="masculino">
                 <input id="masculino" name="genero" type="radio" />
                 Masculino
@@ -38,7 +38,7 @@ const Dashboard: React.FC = () => {
                 Feminino
               </label>
             </div>
-            <div>
+            <div id="opcoes_maes">
               <label htmlFor="gestante">
                 <input id="gestante" type="checkbox" />
                 Gestante
@@ -52,13 +52,13 @@ const Dashboard: React.FC = () => {
                 Bolsa Família
               </label>
             </div>
-            <div>
+            <div id="caracteristicas">
+              Raça/Cor
               <div>
-                Raça/Cor
                 <input placeholder="Selecione" />
               </div>
+              Etnia
               <div>
-                Etnia
                 <input placeholder="Selecione" />
               </div>
             </div>
