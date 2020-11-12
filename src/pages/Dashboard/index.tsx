@@ -1,5 +1,7 @@
 import React from 'react';
 
+import SelectFilterElement from '../../Components/SelectFilterElement';
+
 import {
   Container,
   Header,
@@ -29,28 +31,41 @@ const Dashboard: React.FC = () => {
             <p>Dados dos pacientes</p>
             <hr />
             <div id="genero">
-              <label htmlFor="masculino">
-                <input id="masculino" name="genero" type="radio" />
+              <SelectFilterElement
+                htmlFor="masculino"
+                inputId="masculino"
+                inputType="radio"
+                inputName="genero"
+              >
                 Masculino
-              </label>
+              </SelectFilterElement>
               <label htmlFor="feminino">
                 <input id="feminino" name="genero" type="radio" />
                 Feminino
               </label>
             </div>
             <div id="opcoes_maes">
-              <label htmlFor="gestante">
-                <input id="gestante" type="checkbox" />
+              <SelectFilterElement
+                htmlFor="gestante"
+                inputId="gestante"
+                inputType="checkbox"
+              >
                 Gestante
-              </label>
-              <label htmlFor="lactante">
-                <input id="lactante" type="checkbox" />
+              </SelectFilterElement>
+              <SelectFilterElement
+                htmlFor="lactante"
+                inputId="lactante"
+                inputType="checkbox"
+              >
                 Lactante
-              </label>
-              <label htmlFor="bolsa_familia">
-                <input id="bolsa_familia" type="checkbox" />
+              </SelectFilterElement>
+              <SelectFilterElement
+                htmlFor="bolsa_familia"
+                inputId="bolsa_familia"
+                inputType="checkbox"
+              >
                 Bolsa Família
-              </label>
+              </SelectFilterElement>
             </div>
             <div id="caracteristicas">
               Raça/Cor

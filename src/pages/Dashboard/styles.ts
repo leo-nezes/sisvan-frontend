@@ -61,10 +61,10 @@ export const PatientsData = styled.section`
     font-weight: 700;
   }
 
-  label,
+  /* label,
   input {
     margin-right: 8px;
-  }
+  } */
 
   input[type='radio'] {
     width: 16px;
