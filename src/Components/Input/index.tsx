@@ -2,8 +2,6 @@ import React, { InputHTMLAttributes } from 'react';
 
 import { Container } from './styles';
 
-// type InputProps = InputHTMLAttributes<HTMLInputElement>;
-
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   inputId: string;
   inputType: string;
@@ -15,7 +13,11 @@ const Input: React.FC<InputProps> = ({
   inputType,
   inputName,
 }: InputProps) => {
-  return <Container id={inputId} type={inputType} name={inputName} />;
+  return (
+    <Container>
+      <input id={inputId} type={inputType} name={inputName} />
+    </Container>
+  );
 };
 
 export default Input;

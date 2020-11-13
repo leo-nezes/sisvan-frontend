@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { FiChevronDown } from 'react-icons/fi';
+
 import SelectFilterElement from '../../Components/SelectFilterElement';
 
 import {
@@ -31,79 +33,106 @@ const Dashboard: React.FC = () => {
             <p>Dados dos pacientes</p>
             <hr />
             <div id="genero">
-              <SelectFilterElement
-                htmlFor="masculino"
-                inputId="masculino"
-                inputType="radio"
-                inputName="genero"
-              >
+              <label htmlFor="masculino">
+                <input id="masculino" name="genero" type="radio" />
                 Masculino
-              </SelectFilterElement>
+              </label>
+
               <label htmlFor="feminino">
                 <input id="feminino" name="genero" type="radio" />
                 Feminino
               </label>
             </div>
             <div id="opcoes_maes">
-              <SelectFilterElement
-                htmlFor="gestante"
-                inputId="gestante"
-                inputType="checkbox"
-              >
+              <label htmlFor="gestante">
+                <input id="gestante" name="gestante" type="checkbox" />
                 Gestante
-              </SelectFilterElement>
-              <SelectFilterElement
-                htmlFor="lactante"
-                inputId="lactante"
-                inputType="checkbox"
-              >
+              </label>
+
+              <label htmlFor="lactante">
+                <input id="lactante" name="lactante" type="checkbox" />
                 Lactante
-              </SelectFilterElement>
-              <SelectFilterElement
-                htmlFor="bolsa_familia"
-                inputId="bolsa_familia"
-                inputType="checkbox"
-              >
-                Bolsa Família
-              </SelectFilterElement>
+              </label>
+
+              <label htmlFor="bolsa_familia">
+                <input
+                  id="bolsa_familia"
+                  name="bolsa_familia"
+                  type="checkbox"
+                />
+                Bolsa Familia
+              </label>
             </div>
             <div id="caracteristicas">
-              Raça/Cor
               <div>
-                <input placeholder="Selecione" />
+                Raça/Cor
+                <div>
+                  <input placeholder="Selecione" />
+                  <FiChevronDown />
+                </div>
               </div>
-              Etnia
               <div>
-                <input placeholder="Selecione" />
+                Etnia
+                <div>
+                  <input placeholder="Selecione" />
+                  <FiChevronDown />
+                </div>
               </div>
             </div>
-            <div>
+            <div id="idade">
               Idade
-              <input placeholder="De" />
-              <input placeholder="Até" />
+              <div>
+                <div>
+                  <input placeholder="De" />
+                  <FiChevronDown />
+                </div>
+                <div>
+                  <input placeholder="Até" />
+                  <FiChevronDown />
+                </div>
+              </div>
             </div>
-            <div>
+            <div id="altura">
               Altura
-              <input placeholder="De" />
-              <input placeholder="Até" />
+              <div>
+                <div>
+                  <input placeholder="De" />
+                  <FiChevronDown />
+                </div>
+                <div>
+                  <input placeholder="Até" />
+                  <FiChevronDown />
+                </div>
+              </div>
             </div>
           </PatientsData>
 
           <RegionPeriod>
-            Região e período
+            <p>Região e período</p>
             <hr />
             Localidade
-            <input placeholder="Brasil" />
+            <div>
+              <input placeholder="Brasil" />
+              <FiChevronDown />
+            </div>
             Unidade
-            <input placeholder="Selecione a unidade" />
+            <div>
+              <input placeholder="Selecione a unidade" />
+              <FiChevronDown />
+            </div>
             Ano
-            <input placeholder="Selecione a unidade" />
+            <div>
+              <input type="range" min="0" max="100" />
+            </div>
           </RegionPeriod>
 
           <StatisticalModels>
-            Modelos Estatísticos
+            <p>Modelos Estatísticos</p>
             <hr />
-            <input placeholder="Selecionar" />
+            <div>
+              <input placeholder="Selecionar" />
+              <FiChevronDown />
+            </div>
           </StatisticalModels>
         </FilterContainer>
       </Content>

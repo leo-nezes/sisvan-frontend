@@ -61,30 +61,30 @@ export const PatientsData = styled.section`
     font-weight: 700;
   }
 
-  /* label,
-  input {
-    margin-right: 8px;
-  } */
-
   input[type='radio'] {
     width: 16px;
     height: 16px;
-
-    /* margin-right: 8px; */
-  }
-
-  div {
-    margin-top: 8px;
   }
 
   #genero {
+    margin-top: 8px;
+
     label:first-child {
       margin-right: 75px;
+    }
+
+    label > input {
+      margin-right: 8px;
     }
   }
 
   #opcoes_maes {
-    input[type='checkbox'] {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+
+    label > input {
+      margin-right: 8px;
       width: 14px;
       height: 14px;
     }
@@ -92,14 +92,121 @@ export const PatientsData = styled.section`
 
   #caracteristicas {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 16px;
+
+    div > div {
+      display: flex;
+      height: 42px;
+      width: 142px;
+      padding: 8px;
+      background: #fcfcfc;
+      border-radius: 8px;
+      align-items: center;
+
+      input {
+        flex: 1;
+        background: transparent;
+        border: 0;
+        margin-right: 8px;
+        min-width: 0;
+      }
+    }
+
+    svg {
+      color: #666360;
+    }
+  }
+
+  #idade,
+  #altura {
+    margin-top: 16px;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      div {
+        display: flex;
+        height: 42px;
+        width: 142px;
+        padding: 8px;
+        background: #fcfcfc;
+        border-radius: 8px;
+        align-items: center;
+
+        input {
+          flex: 1;
+          background: transparent;
+          border: 0;
+          margin-right: 8px;
+          min-width: 0;
+        }
+      }
+    }
+
+    /* background: red; */
+  }
+`;
+
+export const RegionPeriod = styled.section`
+  margin-top: 24px;
+
+  hr {
+    margin-bottom: 8px;
+  }
+
+  p,
+  hr {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  div {
+    margin-bottom: 8px;
+  }
+  div {
+    display: flex;
+    padding: 8px;
+    background: #fcfcfc;
+    border-radius: 8px;
+    align-items: center;
 
     input {
-      margin-top: 8px;
+      flex: 1;
+      background: transparent;
+      border: 0;
+      margin-right: 8px;
+      min-width: 0;
     }
   }
 `;
 
-export const RegionPeriod = styled.section``;
+export const StatisticalModels = styled.section`
+  margin-top: 24px;
 
-export const StatisticalModels = styled.section``;
+  p,
+  hr {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  div {
+    display: flex;
+    padding: 8px;
+    background: #fcfcfc;
+    border-radius: 8px;
+    align-items: center;
+    margin-top: 8px;
+
+    input {
+      flex: 1;
+      background: transparent;
+      border: 0;
+      margin-right: 8px;
+      min-width: 0;
+    }
+  }
+`;

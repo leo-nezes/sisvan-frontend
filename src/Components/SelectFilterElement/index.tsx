@@ -7,14 +7,14 @@ import Input from '../Input';
 interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   inputId: string;
   inputType: string;
-  inputName?: string;
+  inputName: string;
 }
 
 const SelectFilterElement: React.FC<LabelProps> = ({
   htmlFor,
   inputId,
   inputType,
-  inputName = '',
+  inputName,
   children,
   ...rest
 }: LabelProps) => {
