@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FiChevronDown } from 'react-icons/fi';
+import { Slider } from '@material-ui/core';
 
-import SelectFilterElement from '../../Components/SelectFilterElement';
+import DropdownList from '../../Components/DropdownList';
 
 import {
   Container,
@@ -15,6 +16,13 @@ import {
 } from './styles';
 
 const Dashboard: React.FC = () => {
+  const textValue = (value: number): string => `${value}`;
+  const [value, setValue] = useState<number[]>([1, 50]);
+
+  const handleChange = (event: any, newValue: number | number[]): void => {
+    setValue(newValue as number[]);
+  };
+
   return (
     <Container>
       <Header>
@@ -66,43 +74,51 @@ const Dashboard: React.FC = () => {
             <div id="caracteristicas">
               <div>
                 Raça/Cor
-                <div>
-                  <input placeholder="Selecione" />
-                  <FiChevronDown />
-                </div>
+                <DropdownList
+                  placeholder="Selecione"
+                  options={['Preto', 'Pardo', 'Branco', 'Amarelo']}
+                />
               </div>
               <div>
                 Etnia
-                <div>
-                  <input placeholder="Selecione" />
-                  <FiChevronDown />
-                </div>
+                <DropdownList
+                  placeholder="Selecione"
+                  options={[
+                    'Brancos',
+                    'Negros',
+                    'Indígenas',
+                    'Pardos',
+                    'Mulatos',
+                    'Caboclos',
+                    'Cafuzos',
+                  ]}
+                />
               </div>
             </div>
             <div id="idade">
               Idade
               <div>
-                <div>
-                  <input placeholder="De" />
-                  <FiChevronDown />
-                </div>
-                <div>
-                  <input placeholder="Até" />
-                  <FiChevronDown />
-                </div>
+                <DropdownList
+                  placeholder="De"
+                  options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                />
+                <DropdownList
+                  placeholder="Até"
+                  options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                />
               </div>
             </div>
             <div id="altura">
               Altura
               <div>
-                <div>
-                  <input placeholder="De" />
-                  <FiChevronDown />
-                </div>
-                <div>
-                  <input placeholder="Até" />
-                  <FiChevronDown />
-                </div>
+                <DropdownList
+                  placeholder="De"
+                  options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                />
+                <DropdownList
+                  placeholder="Até"
+                  options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                />
               </div>
             </div>
           </PatientsData>
@@ -122,7 +138,15 @@ const Dashboard: React.FC = () => {
             </div>
             Ano
             <div>
-              <input type="range" min="0" max="100" />
+              <Slider
+                value={value}
+                step={5}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                getAriaValueText={textValue}
+              />
+              {/* <input type="range" min="0" max="100" /> */}
             </div>
           </RegionPeriod>
 

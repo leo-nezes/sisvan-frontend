@@ -92,31 +92,8 @@ export const PatientsData = styled.section`
 
   #caracteristicas {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     margin-top: 16px;
-
-    div > div {
-      display: flex;
-      height: 42px;
-      width: 142px;
-      padding: 8px;
-      background: #fcfcfc;
-      border-radius: 8px;
-      align-items: center;
-
-      input {
-        flex: 1;
-        background: transparent;
-        border: 0;
-        margin-right: 8px;
-        min-width: 0;
-      }
-    }
-
-    svg {
-      color: #666360;
-    }
   }
 
   #idade,
@@ -127,27 +104,7 @@ export const PatientsData = styled.section`
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-
-      div {
-        display: flex;
-        height: 42px;
-        width: 142px;
-        padding: 8px;
-        background: #fcfcfc;
-        border-radius: 8px;
-        align-items: center;
-
-        input {
-          flex: 1;
-          background: transparent;
-          border: 0;
-          margin-right: 8px;
-          min-width: 0;
-        }
-      }
     }
-
-    /* background: red; */
   }
 `;
 
