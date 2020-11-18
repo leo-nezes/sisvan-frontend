@@ -26,6 +26,8 @@ export const OptionsContainer = styled.div`
   padding: 0 8px;
   border-radius: 8px;
   background: #fcfcfc;
+
+  z-index: 1;
 `;
 
 export const OptionButton = styled.button`

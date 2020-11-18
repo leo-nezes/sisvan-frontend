@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 
 import { FiChevronDown } from 'react-icons/fi';
 import { Slider } from '@material-ui/core';
@@ -19,7 +19,10 @@ const Dashboard: React.FC = () => {
   const textValue = (value: number): string => `${value}`;
   const [value, setValue] = useState<number[]>([1, 50]);
 
-  const handleChange = (event: any, newValue: number | number[]): void => {
+  const handleChange = (
+    event: ChangeEvent<{}>,
+    newValue: number | number[],
+  ): void => {
     setValue(newValue as number[]);
   };
 
@@ -127,27 +130,30 @@ const Dashboard: React.FC = () => {
             <p>Região e período</p>
             <hr />
             Localidade
-            <div>
-              <input placeholder="Brasil" />
-              <FiChevronDown />
-            </div>
+            <DropdownList
+              placeholder="Brasil"
+              options={[
+                'Pará',
+                'Roraima',
+                'São Paulo',
+                'Rio de Janeiro',
+                'Santa Catarina',
+              ]}
+            />
             Unidade
             <div>
               <input placeholder="Selecione a unidade" />
               <FiChevronDown />
             </div>
             Ano
-            <div>
-              <Slider
-                value={value}
-                step={5}
-                onChange={handleChange}
-                valueLabelDisplay="auto"
-                aria-labelledby="range-slider"
-                getAriaValueText={textValue}
-              />
-              {/* <input type="range" min="0" max="100" /> */}
-            </div>
+            <Slider
+              value={value}
+              step={5}
+              onChange={handleChange}
+              valueLabelDisplay="auto"
+              aria-labelledby="range-slider"
+              getAriaValueText={textValue}
+            />
           </RegionPeriod>
 
           <StatisticalModels>

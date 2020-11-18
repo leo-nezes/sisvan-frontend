@@ -102,7 +102,6 @@ export const PatientsData = styled.section`
 
     div {
       display: flex;
-      flex-direction: row;
       justify-content: space-between;
     }
   }
@@ -124,7 +123,7 @@ export const RegionPeriod = styled.section`
   div {
     margin-bottom: 8px;
   }
-  div {
+  /* div {
     display: flex;
     padding: 8px;
     background: #fcfcfc;
@@ -138,7 +137,7 @@ export const RegionPeriod = styled.section`
       margin-right: 8px;
       min-width: 0;
     }
-  }
+  } */
 `;
 
 export const StatisticalModels = styled.section`

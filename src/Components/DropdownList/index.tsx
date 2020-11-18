@@ -6,14 +6,21 @@ import { Container, ButtonBox, OptionsContainer, OptionButton } from './styles';
 
 type OptionsType = string | number;
 
+interface Teste {
+  Button: { width: string; height: string };
+}
+
 interface DropdownListProps extends HTMLAttributes<HTMLDivElement> {
   placeholder: string;
+  containerStyle?: object;
   options: OptionsType[];
 }
 
 const DropdownList: React.FC<DropdownListProps> = ({
   placeholder,
+  containerStyle = {},
   options,
+  ...rest
 }: DropdownListProps) => {
   const [hide, setHide] = useState(true);
   const [selectedValue, setSelectedValue] = useState<OptionsType>(placeholder);
@@ -40,7 +47,7 @@ const DropdownList: React.FC<DropdownListProps> = ({
               key={option}
               type="button"
               value={option}
-              onClick={(e) => handleChangeValue(option)}
+              onClick={() => handleChangeValue(option)}
             >
               {option}
             </OptionButton>
@@ -49,6 +56,10 @@ const DropdownList: React.FC<DropdownListProps> = ({
       )}
     </Container>
   );
+};
+
+DropdownList.defaultProps = {
+  containerStyle: { Button: { width: '142px', height: '42px' } },
 };
 
 export default DropdownList;
