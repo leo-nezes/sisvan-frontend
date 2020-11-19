@@ -23,6 +23,7 @@ export const OptionsContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 142px;
+  max-width: 320px;
   padding: 0 8px;
   border-radius: 8px;
   background: #fcfcfc;

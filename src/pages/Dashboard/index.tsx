@@ -1,9 +1,10 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useCallback } from 'react';
 
-import { FiChevronDown } from 'react-icons/fi';
 import { Slider } from '@material-ui/core';
+import { FiSearch } from 'react-icons/fi';
 
 import DropdownList from '../../Components/DropdownList';
+import Button from '../../Components/Button';
 
 import {
   Container,
@@ -13,11 +14,14 @@ import {
   PatientsData,
   RegionPeriod,
   StatisticalModels,
+  Footer,
 } from './styles';
 
 const Dashboard: React.FC = () => {
-  const textValue = (value: number): string => `${value}`;
   const [value, setValue] = useState<number[]>([1, 50]);
+  const yearNow = new Date();
+
+  const style = { button: { width: '320px' }, list: { width: '320px' } };
 
   const handleChange = (
     event: ChangeEvent<{}>,
@@ -25,6 +29,10 @@ const Dashboard: React.FC = () => {
   ): void => {
     setValue(newValue as number[]);
   };
+
+  const handleFilter = useCallback(() => {
+    console.log('Clicou');
+  }, []);
 
   return (
     <Container>
@@ -132,6 +140,7 @@ const Dashboard: React.FC = () => {
             Localidade
             <DropdownList
               placeholder="Brasil"
+              containerStyle={style}
               options={[
                 'Pará',
                 'Roraima',
@@ -141,10 +150,17 @@ const Dashboard: React.FC = () => {
               ]}
             />
             Unidade
-            <div>
-              <input placeholder="Selecione a unidade" />
-              <FiChevronDown />
-            </div>
+            <DropdownList
+              placeholder="Selecione"
+              containerStyle={style}
+              options={[
+                'Unidade 1',
+                'Unidade 2',
+                'Unidade 3',
+                'Unidade 4',
+                'Unidade 5',
+              ]}
+            />
             Ano
             <Slider
               value={value}
@@ -152,20 +168,34 @@ const Dashboard: React.FC = () => {
               onChange={handleChange}
               valueLabelDisplay="auto"
               aria-labelledby="range-slider"
-              getAriaValueText={textValue}
+              getAriaValueText={(textValue: number): string => `${textValue}`}
             />
           </RegionPeriod>
 
           <StatisticalModels>
             <p>Modelos Estatísticos</p>
             <hr />
-            <div>
-              <input placeholder="Selecionar" />
-              <FiChevronDown />
-            </div>
+            <DropdownList
+              placeholder="Mapa"
+              containerStyle={style}
+              options={['Mapa', 'Histograma', 'Gráfico de Linha']}
+            />
           </StatisticalModels>
+
+          <Button onClick={handleFilter}>
+            <FiSearch />
+            Filtrar
+          </Button>
         </FilterContainer>
       </Content>
+
+      <Footer>
+        Ministério da Saúde &copy; &nbsp;
+        {yearNow.getFullYear()}
+        <a href="http://aps.saude.gov.br/" target="_blank" rel="noreferrer">
+          Secretaria de Atenção Primária à Saúde
+        </a>
+      </Footer>
     </Container>
   );
 };

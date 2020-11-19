@@ -6,24 +6,30 @@ import { Container, ButtonBox, OptionsContainer, OptionButton } from './styles';
 
 type OptionsType = string | number;
 
-interface Teste {
-  Button: { width: string; height: string };
-}
+type IContainerStyleProps = {
+  button: object;
+  list: object;
+};
 
-interface DropdownListProps extends HTMLAttributes<HTMLDivElement> {
+interface IDropdownListProps extends HTMLAttributes<HTMLDivElement> {
   placeholder: string;
-  containerStyle?: object;
+  containerStyle?: IContainerStyleProps;
   options: OptionsType[];
 }
 
-const DropdownList: React.FC<DropdownListProps> = ({
+const DropdownList: React.FC<IDropdownListProps> = ({
   placeholder,
-  containerStyle = {},
+  containerStyle = {
+    button: Object,
+    list: Object,
+  },
   options,
   ...rest
-}: DropdownListProps) => {
+}: IDropdownListProps) => {
   const [hide, setHide] = useState(true);
   const [selectedValue, setSelectedValue] = useState<OptionsType>(placeholder);
+
+  const { button, list } = containerStyle;
 
   const handleHide = (): void => {
     setHide(!hide);
@@ -35,13 +41,13 @@ const DropdownList: React.FC<DropdownListProps> = ({
   };
 
   return (
-    <Container>
-      <ButtonBox onClick={handleHide} type="button">
+    <Container {...rest}>
+      <ButtonBox style={{ ...button }} onClick={handleHide} type="button">
         {selectedValue}
         <FiChevronDown />
       </ButtonBox>
       {!hide && (
-        <OptionsContainer>
+        <OptionsContainer style={{ ...list }}>
           {options.map((option) => (
             <OptionButton
               key={option}
@@ -59,7 +65,10 @@ const DropdownList: React.FC<DropdownListProps> = ({
 };
 
 DropdownList.defaultProps = {
-  containerStyle: { Button: { width: '142px', height: '42px' } },
+  containerStyle: {
+    button: { width: '142px', height: '42px' },
+    list: { width: '142px' },
+  },
 };
 
 export default DropdownList;

@@ -34,8 +34,7 @@ export const Content = styled.div`
   display: flex;
 
   max-width: calc(100vw - (100vw - 100%));
-  height: 100vh;
-  margin: 8px 64px;
+  margin: 16px 64px;
   flex-direction: column;
 
   span {
@@ -123,46 +122,31 @@ export const RegionPeriod = styled.section`
   div {
     margin-bottom: 8px;
   }
-  /* div {
-    display: flex;
-    padding: 8px;
-    background: #fcfcfc;
-    border-radius: 8px;
-    align-items: center;
-
-    input {
-      flex: 1;
-      background: transparent;
-      border: 0;
-      margin-right: 8px;
-      min-width: 0;
-    }
-  } */
 `;
 
 export const StatisticalModels = styled.section`
   margin-top: 24px;
+
+  hr {
+    margin-bottom: 8px;
+  }
 
   p,
   hr {
     font-size: 16px;
     font-weight: 700;
   }
+`;
 
-  div {
-    display: flex;
-    padding: 8px;
-    background: #fcfcfc;
-    border-radius: 8px;
-    align-items: center;
-    margin-top: 8px;
+export const Footer = styled.footer`
+  display: flex;
+  width: calc(100vw - (100vw - 100%));
+  padding: 32px 64px;
+  background: #008d4c;
+  color: #f6f4f8;
+  justify-content: space-between;
 
-    input {
-      flex: 1;
-      background: transparent;
-      border: 0;
-      margin-right: 8px;
-      min-width: 0;
-    }
+  a {
+    color: #f6f4f8;
   }
 `;
