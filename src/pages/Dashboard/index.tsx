@@ -182,7 +182,7 @@ const Dashboard: React.FC = () => {
             />
           </StatisticalModels>
 
-          <Button onClick={handleFilter}>
+          <Button id="buttonComponent" onClick={handleFilter}>
             <FiSearch />
             Filtrar
           </Button>

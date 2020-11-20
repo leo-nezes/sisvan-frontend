@@ -1,15 +1,11 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
 
-import { IconBaseProps } from 'react-icons/lib';
-
 import { Container } from './styles';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  icon?: React.ComponentType<IconBaseProps>;
-}
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button: React.FC<ButtonProps> = ({ children, icon: Icon, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ children, ...rest }) => {
   return (
     <Container type="button" {...rest}>
       {children}
@@ -19,12 +15,10 @@ const Button: React.FC<ButtonProps> = ({ children, icon: Icon, ...rest }) => {
 
 Button.propTypes = {
   children: PropTypes.node,
-  icon: PropTypes.node,
 };
 
 Button.defaultProps = {
   children: PropTypes.node,
-  icon: '',
 };
 
 export default Button;

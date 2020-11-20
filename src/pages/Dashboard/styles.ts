@@ -51,6 +51,16 @@ export const FilterContainer = styled.aside`
 
   border-radius: 16px;
   background: #f5f5f5;
+
+  #buttonComponent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-right: 8px;
+    }
+  }
 `;
 
 export const PatientsData = styled.section`
