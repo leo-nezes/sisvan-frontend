@@ -5,12 +5,16 @@ import { FiSearch } from 'react-icons/fi';
 
 import DropdownList from '../../Components/DropdownList';
 import Button from '../../Components/Button';
+import GeoMap from '../../Components/GeoMap';
 
 import {
   Container,
   Header,
   Content,
   FilterContainer,
+  FilterBox,
+  MapContainer,
+  MapBox,
   PatientsData,
   RegionPeriod,
   StatisticalModels,
@@ -45,148 +49,157 @@ const Dashboard: React.FC = () => {
       </Header>
 
       <Content>
-        <span>Utilize os filtros para a construção do gráfico.</span>
-
         <FilterContainer>
-          <PatientsData>
-            <p>Dados dos pacientes</p>
-            <hr />
-            <div id="genero">
-              <label htmlFor="masculino">
-                <input id="masculino" name="genero" type="radio" />
-                Masculino
-              </label>
+          <span>Utilize os filtros para a construção do gráfico.</span>
+          <FilterBox>
+            <PatientsData>
+              <p>Dados dos pacientes</p>
+              <hr />
+              <div id="genero">
+                <label htmlFor="masculino">
+                  <input id="masculino" name="genero" type="radio" />
+                  Masculino
+                </label>
 
-              <label htmlFor="feminino">
-                <input id="feminino" name="genero" type="radio" />
-                Feminino
-              </label>
-            </div>
-            <div id="opcoes_maes">
-              <label htmlFor="gestante">
-                <input id="gestante" name="gestante" type="checkbox" />
-                Gestante
-              </label>
-
-              <label htmlFor="lactante">
-                <input id="lactante" name="lactante" type="checkbox" />
-                Lactante
-              </label>
-
-              <label htmlFor="bolsa_familia">
-                <input
-                  id="bolsa_familia"
-                  name="bolsa_familia"
-                  type="checkbox"
-                />
-                Bolsa Familia
-              </label>
-            </div>
-            <div id="caracteristicas">
-              <div>
-                Raça/Cor
-                <DropdownList
-                  placeholder="Selecione"
-                  options={['Preto', 'Pardo', 'Branco', 'Amarelo']}
-                />
+                <label htmlFor="feminino">
+                  <input id="feminino" name="genero" type="radio" />
+                  Feminino
+                </label>
               </div>
-              <div>
-                Etnia
-                <DropdownList
-                  placeholder="Selecione"
-                  options={[
-                    'Brancos',
-                    'Negros',
-                    'Indígenas',
-                    'Pardos',
-                    'Mulatos',
-                    'Caboclos',
-                    'Cafuzos',
-                  ]}
-                />
-              </div>
-            </div>
-            <div id="idade">
-              Idade
-              <div>
-                <DropdownList
-                  placeholder="De"
-                  options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                />
-                <DropdownList
-                  placeholder="Até"
-                  options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                />
-              </div>
-            </div>
-            <div id="altura">
-              Altura
-              <div>
-                <DropdownList
-                  placeholder="De"
-                  options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                />
-                <DropdownList
-                  placeholder="Até"
-                  options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
-                />
-              </div>
-            </div>
-          </PatientsData>
+              <div id="opcoes_maes">
+                <label htmlFor="gestante">
+                  <input id="gestante" name="gestante" type="checkbox" />
+                  Gestante
+                </label>
 
-          <RegionPeriod>
-            <p>Região e período</p>
-            <hr />
-            Localidade
-            <DropdownList
-              placeholder="Brasil"
-              containerStyle={style}
-              options={[
-                'Pará',
-                'Roraima',
-                'São Paulo',
-                'Rio de Janeiro',
-                'Santa Catarina',
-              ]}
-            />
-            Unidade
-            <DropdownList
-              placeholder="Selecione"
-              containerStyle={style}
-              options={[
-                'Unidade 1',
-                'Unidade 2',
-                'Unidade 3',
-                'Unidade 4',
-                'Unidade 5',
-              ]}
-            />
-            Ano
-            <Slider
-              value={value}
-              step={5}
-              onChange={handleChange}
-              valueLabelDisplay="auto"
-              aria-labelledby="range-slider"
-              getAriaValueText={(textValue: number): string => `${textValue}`}
-            />
-          </RegionPeriod>
+                <label htmlFor="lactante">
+                  <input id="lactante" name="lactante" type="checkbox" />
+                  Lactante
+                </label>
 
-          <StatisticalModels>
-            <p>Modelos Estatísticos</p>
-            <hr />
-            <DropdownList
-              placeholder="Mapa"
-              containerStyle={style}
-              options={['Mapa', 'Histograma', 'Gráfico de Linha']}
-            />
-          </StatisticalModels>
+                <label htmlFor="bolsa_familia">
+                  <input
+                    id="bolsa_familia"
+                    name="bolsa_familia"
+                    type="checkbox"
+                  />
+                  Bolsa Familia
+                </label>
+              </div>
+              <div id="caracteristicas">
+                <div>
+                  Raça/Cor
+                  <DropdownList
+                    placeholder="Selecione"
+                    options={['Preto', 'Pardo', 'Branco', 'Amarelo']}
+                  />
+                </div>
+                <div>
+                  Etnia
+                  <DropdownList
+                    placeholder="Selecione"
+                    options={[
+                      'Brancos',
+                      'Negros',
+                      'Indígenas',
+                      'Pardos',
+                      'Mulatos',
+                      'Caboclos',
+                      'Cafuzos',
+                    ]}
+                  />
+                </div>
+              </div>
+              <div id="idade">
+                Idade
+                <div>
+                  <DropdownList
+                    placeholder="De"
+                    options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                  />
+                  <DropdownList
+                    placeholder="Até"
+                    options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                  />
+                </div>
+              </div>
+              <div id="altura">
+                Altura
+                <div>
+                  <DropdownList
+                    placeholder="De"
+                    options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                  />
+                  <DropdownList
+                    placeholder="Até"
+                    options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                  />
+                </div>
+              </div>
+            </PatientsData>
 
-          <Button id="buttonComponent" onClick={handleFilter}>
-            <FiSearch />
-            Filtrar
-          </Button>
+            <RegionPeriod>
+              <p>Região e período</p>
+              <hr />
+              Localidade
+              <DropdownList
+                placeholder="Brasil"
+                containerStyle={style}
+                options={[
+                  'Pará',
+                  'Roraima',
+                  'São Paulo',
+                  'Rio de Janeiro',
+                  'Santa Catarina',
+                ]}
+              />
+              Unidade
+              <DropdownList
+                placeholder="Selecione"
+                containerStyle={style}
+                options={[
+                  'Unidade 1',
+                  'Unidade 2',
+                  'Unidade 3',
+                  'Unidade 4',
+                  'Unidade 5',
+                ]}
+              />
+              Ano
+              <Slider
+                value={value}
+                step={5}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
+                getAriaValueText={(textValue: number): string => `${textValue}`}
+              />
+            </RegionPeriod>
+
+            <StatisticalModels>
+              <p>Modelos Estatísticos</p>
+              <hr />
+              <DropdownList
+                placeholder="Mapa"
+                containerStyle={style}
+                options={['Mapa', 'Histograma', 'Gráfico de Linha']}
+              />
+            </StatisticalModels>
+
+            <Button id="buttonComponent" onClick={handleFilter}>
+              <FiSearch />
+              Filtrar
+            </Button>
+          </FilterBox>
         </FilterContainer>
+
+        <MapContainer>
+          <h3>Estados nutricionais</h3>
+          <p>Total: 20.000 resultados</p>
+          <MapBox>
+            <GeoMap />
+          </MapBox>
+        </MapContainer>
       </Content>
 
       <Footer>

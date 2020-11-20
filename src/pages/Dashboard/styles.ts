@@ -32,17 +32,21 @@ export const Header = styled.header`
 
 export const Content = styled.div`
   display: flex;
+  flex-direction: row;
 
   max-width: calc(100vw - (100vw - 100%));
   margin: 16px 64px;
-  flex-direction: column;
 
   span {
     font-size: 16px;
   }
 `;
 
-export const FilterContainer = styled.aside`
+export const FilterContainer = styled.div`
+  margin-right: 32px;
+`;
+
+export const FilterBox = styled.aside`
   width: 100%;
   max-width: 351px;
   height: 801px;
@@ -61,6 +65,22 @@ export const FilterContainer = styled.aside`
       margin-right: 8px;
     }
   }
+`;
+
+export const MapContainer = styled.section`
+  max-width: 730px;
+  max-height: 500px;
+
+  h3,
+  p {
+    color: #666360;
+    margin-bottom: 8px;
+  }
+`;
+
+export const MapBox = styled.div`
+  display: flex;
+  flex: 1;
 `;
 
 export const PatientsData = styled.section`
