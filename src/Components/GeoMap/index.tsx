@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { Geomap } from 'd3plus-react';
+import { Treemap, Geomap } from 'd3plus-react';
+
+import brStates from '../../data/br-states.json';
+
+type SizeProps = { id: string; value: number };
+type GeoProps = { id: string; population: number };
 
 const GeoMap: React.FC = () => {
   const popData = [
@@ -58,17 +63,65 @@ const GeoMap: React.FC = () => {
     { id: '72', population: 3583073 },
   ];
 
+  const brStatesData = [
+    { id: 'AC', population: 4830620 },
+    { id: 'AL', population: 733375 },
+    { id: 'AP', population: 6641928 },
+    { id: 'AM', population: 2958208 },
+    { id: 'BA', population: 38421464 },
+    { id: 'CE', population: 5278906 },
+    { id: 'DF', population: 3593222 },
+    { id: 'ES', population: 926454 },
+    { id: 'GO', population: 647484 },
+    { id: 'MA', population: 19645772 },
+    { id: 'MT', population: 10006693 },
+    { id: 'MS', population: 1406299 },
+    { id: 'MG', population: 1616547 },
+    { id: 'PA', population: 12873761 },
+    { id: 'PB', population: 6568645 },
+    { id: 'PR', population: 3093526 },
+    { id: 'PE', population: 2892987 },
+    { id: 'PI', population: 4397353 },
+    { id: 'RR', population: 4625253 },
+    { id: 'RO', population: 1329100 },
+    { id: 'RJ', population: 5930538 },
+    { id: 'RN', population: 6705586 },
+    { id: 'RS', population: 9900571 },
+    { id: 'SC', population: 5419171 },
+    { id: 'SP', population: 2988081 },
+    { id: 'SE', population: 6045448 },
+    { id: 'TO', population: 1014699 },
+  ];
+
+  const methods = {
+    groupBy: 'id',
+    data: [
+      { id: 'alpha', value: 29 },
+      { id: 'beta', value: 10 },
+      { id: 'teta', value: 30 },
+      { id: 'Leonardo', value: 50 },
+    ],
+    size: (d: SizeProps) => d.value,
+  };
+
+  const methodsGeo = {
+    data: [...brStatesData],
+    colorScale: 'population',
+    topojson: brStates,
+    fitFilter: (d: GeoProps) => {
+      return ['02', '15', '43', '60', '66', '69', '72', '78'].indexOf(d.id) < 0;
+    },
+    tiles: false,
+    ocean: 'transparent',
+    width: '700',
+    height: '700',
+  };
+
   return (
-    <Geomap
-      data={popData}
-      colorScale="population"
-      topojson="https://d3plus.org/topojson/states.json"
-      fitFilter={(d: { id: string }) => {
-        return (
-          ['02', '15', '43', '60', '66', '69', '72', '78'].indexOf(d.id) < 0
-        );
-      }}
-    />
+    <>
+      {/* <Treemap config={methods} /> */}
+      <Geomap config={methodsGeo} />
+    </>
   );
 };
 
