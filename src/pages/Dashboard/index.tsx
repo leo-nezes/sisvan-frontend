@@ -15,6 +15,7 @@ import {
   FilterBox,
   MapContainer,
   MapBox,
+  InformationContainer,
   PatientsData,
   RegionPeriod,
   StatisticalModels,
@@ -23,6 +24,9 @@ import {
 
 const Dashboard: React.FC = () => {
   const [value, setValue] = useState<number[]>([1, 50]);
+  const [showInformationContainer, setshowInformationContainer] = useState(
+    false,
+  );
   const yearNow = new Date();
 
   const style = { button: { width: '320px' }, list: { width: '320px' } };
@@ -198,6 +202,9 @@ const Dashboard: React.FC = () => {
           <p>Total: 20.000 resultados</p>
           <MapBox>
             <GeoMap />
+            {showInformationContainer && (
+              <InformationContainer>Informações</InformationContainer>
+            )}
           </MapBox>
         </MapContainer>
       </Content>

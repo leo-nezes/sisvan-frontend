@@ -68,8 +68,9 @@ export const FilterBox = styled.aside`
 `;
 
 export const MapContainer = styled.section`
-  max-width: 730px;
-  max-height: 500px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 
   h3,
   p {
@@ -80,7 +81,15 @@ export const MapContainer = styled.section`
 
 export const MapBox = styled.div`
   display: flex;
-  flex: 1;
+  flex-direction: row;
+`;
+
+export const InformationContainer = styled.div`
+  width: 280px;
+  /* background: #666360; */
+  margin-left: 8px;
+  border-radius: 0 16px 16px 0;
+  box-shadow: -1px 1px 5px #807e7e;
 `;
 
 export const PatientsData = styled.section`
