@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import { Geomap } from 'd3plus-react';
 
+import { useMap } from '../../hooks/map';
 import brStates from '../../data/br-states.json';
 
-type GeoProps = { id: string; population: number };
-
 const GeoMap: React.FC = () => {
+  const { mapInformation } = useMap();
+
   const brStatesData = [
     { id: 'AC', population: 4830620 },
     { id: 'AL', population: 733375 },
@@ -41,20 +42,17 @@ const GeoMap: React.FC = () => {
     data: [...brStatesData],
     colorScale: 'population',
     topojson: brStates,
-    fitFilter: (d: GeoProps) => {
-      return ['02', '15', '43', '60', '66', '69', '72', '78'].indexOf(d.id) < 0;
-    },
     tiles: false,
     ocean: 'transparent',
     // colorScaleConfig: { color: ['red', 'orange', 'yellow', 'green', 'blue'] },
     width: '836',
     // width: '556',
     height: '768',
-    // on:
-    //   ('click',
-    //   () => {
-    //     console.log(`Clicou aqui! ${'click'}`);
-    //   }),
+    on: {
+      click: useCallback((data) => {
+        console.log(data.id);
+      }, []),
+    },
   };
 
   return (
