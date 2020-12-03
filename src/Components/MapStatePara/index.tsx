@@ -2,12 +2,7 @@ import React, { useCallback } from 'react';
 
 import { Geomap } from 'd3plus-react';
 
-import para1 from '../../data/para1.json';
-
-interface ICities {
-  id: string;
-  population: number;
-}
+import para from '../../data/PA.json';
 
 const MapStatePara: React.FC = () => {
   const paraCities = [
@@ -159,22 +154,20 @@ const MapStatePara: React.FC = () => {
   const methods = {
     data: [...paraCities],
     colorScale: 'population',
-    topojson: para1,
+    topojson: para,
     tiles: false,
     ocean: 'transparent',
-    text: 'name',
-    // colorScaleConfig: { color: ['red', 'orange', 'yellow', 'green', 'blue'] },
+    text: 'nome',
     width: '836',
     // width: '556',
     height: '768',
     on: {
       click: useCallback((data) => {
+        console.log(data.population);
+      }, []),
+      hover: useCallback((data) => {
         console.log(data.id);
       }, []),
-    },
-    tooltipConfig: {
-      body: (d: ICities) => `<div>Value: ${d.population}</div>`,
-      title: (d: ICities) => `${d.population}`,
     },
   };
 
