@@ -5,8 +5,8 @@ import { FiSearch } from 'react-icons/fi';
 
 import DropdownList from '../../Components/DropdownList';
 import Button from '../../Components/Button';
-import GeoMap from '../../Components/GeoMap';
-import MapStatePara from '../../Components/MapStatePara';
+import States from '../../Components/GeoMap/States';
+import Para from '../../Components/GeoMap/Para';
 
 import {
   Container,
@@ -196,8 +196,8 @@ const Dashboard: React.FC = () => {
           <h3>Estados nutricionais</h3>
           <p>Total: 20.000 resultados</p>
           <MapBox>
-            <MapStatePara />
-            {/* <GeoMap /> */}
+            <Para />
+            {/* <States /> */}
             {/* {showInformationContainer && (
               <InformationContainer>Informações</InformationContainer>
             )} */}

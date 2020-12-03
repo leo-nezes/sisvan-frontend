@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { Geomap } from 'd3plus-react';
 
-import para from '../../data/PA.json';
+import para from '../../../data/PA.json';
 
 const MapStatePara: React.FC = () => {
   const paraCities = [

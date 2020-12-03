@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import { Geomap } from 'd3plus-react';
 
-import brStates from '../../data/br-states.json';
+import brStates from '../../../data/br-states.json';
 
 const GeoMap: React.FC = () => {
   const brStatesData = [
