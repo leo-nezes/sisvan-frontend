@@ -1,31 +1,28 @@
-import React, { createContext, useCallback, useContext, useState } from 'react';
-
-interface IContainerInfo {
-  filterId: string;
-  showContainerInfo: boolean;
-}
+import React, {
+  createContext,
+  RefObject,
+  useCallback,
+  useContext,
+  useState,
+} from 'react';
 
 interface IMapContextData {
-  mapInformation: object;
-  showInformation(dataInfo: IContainerInfo): void;
+  mapRef: RefObject<HTMLDivElement> | undefined;
+  getMapRef(ref: RefObject<HTMLDivElement>): string;
 }
 
 const MapContext = createContext<IMapContextData>({} as IMapContextData);
 
 const MapProvider: React.FC = () => {
-  const [mapInformation, setMapInformation] = useState({
-    filterId: '',
-    showContainerInfo: false,
-  });
+  const [mapRef, setMapRef] = useState<RefObject<HTMLDivElement>>();
 
-  const showInformation = useCallback(
-    ({ filterId, showContainerInfo }: IContainerInfo) => {
-      setMapInformation({ filterId, showContainerInfo });
-    },
-    [],
-  );
+  const getMapRef = useCallback((ref: RefObject<HTMLDivElement>) => {
+    setMapRef(ref);
 
-  return <MapContext.Provider value={{ mapInformation, showInformation }} />;
+    return 'ok';
+  }, []);
+
+  return <MapContext.Provider value={{ mapRef, getMapRef }} />;
 };
 
 function useMap(): IMapContextData {

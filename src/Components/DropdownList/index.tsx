@@ -6,15 +6,16 @@ import { Container, ButtonBox, OptionsContainer, OptionButton } from './styles';
 
 type OptionsType = string | number;
 
-type IContainerStyleProps = {
+type ContainerStyleProps = {
   button: object;
   list: object;
 };
 
 interface IDropdownListProps extends HTMLAttributes<HTMLDivElement> {
   placeholder: string;
-  containerStyle?: IContainerStyleProps;
+  containerStyle?: ContainerStyleProps;
   options: OptionsType[];
+  // status:
 }
 
 const DropdownList: React.FC<IDropdownListProps> = ({
@@ -35,8 +36,9 @@ const DropdownList: React.FC<IDropdownListProps> = ({
     setHide(!hide);
   };
 
-  const handleChangeValue = (option: OptionsType): void => {
+  const handleChangeValue = (option: OptionsType, index: number): void => {
     setSelectedValue(option);
+    console.log(index);
     setHide(!hide);
   };
 
@@ -48,12 +50,12 @@ const DropdownList: React.FC<IDropdownListProps> = ({
       </ButtonBox>
       {!hide && (
         <OptionsContainer style={{ ...list }}>
-          {options.map((option) => (
+          {options.map((option, index) => (
             <OptionButton
               key={option}
               type="button"
               value={option}
-              onClick={() => handleChangeValue(option)}
+              onClick={() => handleChangeValue(option, index)}
             >
               {option}
             </OptionButton>

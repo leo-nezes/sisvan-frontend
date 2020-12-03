@@ -6,6 +6,7 @@ import { FiSearch } from 'react-icons/fi';
 import DropdownList from '../../Components/DropdownList';
 import Button from '../../Components/Button';
 import GeoMap from '../../Components/GeoMap';
+import MapStatePara from '../../Components/MapStatePara';
 
 import {
   Container,
@@ -149,13 +150,7 @@ const Dashboard: React.FC = () => {
               <DropdownList
                 placeholder="Brasil"
                 containerStyle={style}
-                options={[
-                  'Pará',
-                  'Roraima',
-                  'São Paulo',
-                  'Rio de Janeiro',
-                  'Santa Catarina',
-                ]}
+                options={['Pará']}
               />
               Unidade
               <DropdownList
@@ -201,10 +196,11 @@ const Dashboard: React.FC = () => {
           <h3>Estados nutricionais</h3>
           <p>Total: 20.000 resultados</p>
           <MapBox>
-            <GeoMap />
-            {showInformationContainer && (
+            <MapStatePara />
+            {/* <GeoMap /> */}
+            {/* {showInformationContainer && (
               <InformationContainer>Informações</InformationContainer>
-            )}
+            )} */}
           </MapBox>
         </MapContainer>
       </Content>

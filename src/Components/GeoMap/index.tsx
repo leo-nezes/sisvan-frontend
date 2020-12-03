@@ -2,12 +2,9 @@ import React, { useCallback } from 'react';
 
 import { Geomap } from 'd3plus-react';
 
-import { useMap } from '../../hooks/map';
 import brStates from '../../data/br-states.json';
 
 const GeoMap: React.FC = () => {
-  const { mapInformation } = useMap();
-
   const brStatesData = [
     { id: 'AC', population: 4830620 },
     { id: 'AL', population: 733375 },
@@ -55,11 +52,7 @@ const GeoMap: React.FC = () => {
     },
   };
 
-  return (
-    <>
-      <Geomap config={methodsGeo} />
-    </>
-  );
+  return <Geomap config={methodsGeo} />;
 };
 
 export default GeoMap;
