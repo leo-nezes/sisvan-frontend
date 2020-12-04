@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent, useCallback } from 'react';
 import { Slider } from '@material-ui/core';
 import { FiSearch } from 'react-icons/fi';
 
+import { useMap } from '../../hooks/map';
 import DropdownList from '../../Components/DropdownList';
 import Button from '../../Components/Button';
 import States from '../../Components/GeoMap/States';
@@ -24,6 +25,7 @@ import {
 } from './styles';
 
 const Dashboard: React.FC = () => {
+  const { filterData } = useMap();
   const [value, setValue] = useState<number[]>([1, 50]);
   const [showInformationContainer, setshowInformationContainer] = useState(
     false,
@@ -96,7 +98,7 @@ const Dashboard: React.FC = () => {
                   Raça/Cor
                   <DropdownList
                     placeholder="Selecione"
-                    options={['Preto', 'Pardo', 'Branco', 'Amarelo']}
+                    options={['Pardo', 'Preto', 'Branco', 'Amarelo']}
                   />
                 </div>
                 <div>
@@ -120,11 +122,33 @@ const Dashboard: React.FC = () => {
                 <div>
                   <DropdownList
                     placeholder="De"
-                    options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                    options={[
+                      '1',
+                      '2',
+                      '3',
+                      '4',
+                      '5',
+                      '6',
+                      '7',
+                      '8',
+                      '9',
+                      '10',
+                    ]}
                   />
                   <DropdownList
                     placeholder="Até"
-                    options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                    options={[
+                      '1',
+                      '2',
+                      '3',
+                      '4',
+                      '5',
+                      '6',
+                      '7',
+                      '8',
+                      '9',
+                      '10',
+                    ]}
                   />
                 </div>
               </div>
@@ -133,11 +157,33 @@ const Dashboard: React.FC = () => {
                 <div>
                   <DropdownList
                     placeholder="De"
-                    options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                    options={[
+                      '1',
+                      '2',
+                      '3',
+                      '4',
+                      '5',
+                      '6',
+                      '7',
+                      '8',
+                      '9',
+                      '10',
+                    ]}
                   />
                   <DropdownList
                     placeholder="Até"
-                    options={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
+                    options={[
+                      '1',
+                      '2',
+                      '3',
+                      '4',
+                      '5',
+                      '6',
+                      '7',
+                      '8',
+                      '9',
+                      '10',
+                    ]}
                   />
                 </div>
               </div>
@@ -150,7 +196,7 @@ const Dashboard: React.FC = () => {
               <DropdownList
                 placeholder="Brasil"
                 containerStyle={style}
-                options={['Pará']}
+                options={['Brasil', 'Para']}
               />
               Unidade
               <DropdownList
@@ -196,8 +242,7 @@ const Dashboard: React.FC = () => {
           <h3>Estados nutricionais</h3>
           <p>Total: 20.000 resultados</p>
           <MapBox>
-            <Para />
-            {/* <States /> */}
+            {filterData.map === 'Para' ? <Para /> : <States />}
             {/* {showInformationContainer && (
               <InformationContainer>Informações</InformationContainer>
             )} */}

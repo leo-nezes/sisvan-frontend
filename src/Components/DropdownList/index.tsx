@@ -2,24 +2,21 @@ import React, { HTMLAttributes, useState } from 'react';
 
 import { FiChevronDown } from 'react-icons/fi';
 
+import { useMap } from '../../hooks/map';
+
 import { Container, ButtonBox, OptionsContainer, OptionButton } from './styles';
 
-type OptionsType = string | number;
-
-type ContainerStyleProps = {
+type IContainerStyleProps = {
   button: object;
   list: object;
 };
 
 interface IDropdownListProps extends HTMLAttributes<HTMLDivElement> {
-  placeholder: string;
-  containerStyle?: ContainerStyleProps;
-  options: OptionsType[];
-  // status:
+  containerStyle?: IContainerStyleProps;
+  options: string[];
 }
 
 const DropdownList: React.FC<IDropdownListProps> = ({
-  placeholder,
   containerStyle = {
     button: Object,
     list: Object,
@@ -28,17 +25,18 @@ const DropdownList: React.FC<IDropdownListProps> = ({
   ...rest
 }: IDropdownListProps) => {
   const [hide, setHide] = useState(true);
-  const [selectedValue, setSelectedValue] = useState<OptionsType>(placeholder);
+  const [selectedValue, setSelectedValue] = useState<string>('Selecione');
 
   const { button, list } = containerStyle;
+  const { setFilter } = useMap();
 
   const handleHide = (): void => {
     setHide(!hide);
   };
 
-  const handleChangeValue = (option: OptionsType, index: number): void => {
+  const handleSetOption = (option: string): void => {
+    setFilter({ map: option });
     setSelectedValue(option);
-    console.log(index);
     setHide(!hide);
   };
 
@@ -50,12 +48,12 @@ const DropdownList: React.FC<IDropdownListProps> = ({
       </ButtonBox>
       {!hide && (
         <OptionsContainer style={{ ...list }}>
-          {options.map((option, index) => (
+          {options.map((option) => (
             <OptionButton
               key={option}
               type="button"
               value={option}
-              onClick={() => handleChangeValue(option, index)}
+              onClick={() => handleSetOption(option)}
             >
               {option}
             </OptionButton>

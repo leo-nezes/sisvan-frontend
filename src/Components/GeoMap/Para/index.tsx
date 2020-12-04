@@ -157,15 +157,11 @@ const MapStatePara: React.FC = () => {
     topojson: para,
     tiles: false,
     ocean: 'transparent',
-    text: 'nome',
     width: '836',
     // width: '556',
     height: '768',
     on: {
       click: useCallback((data) => {
-        console.log(data.population);
-      }, []),
-      hover: useCallback((data) => {
         console.log(data.id);
       }, []),
     },

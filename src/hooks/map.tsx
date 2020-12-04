@@ -1,28 +1,42 @@
-import React, {
-  createContext,
-  RefObject,
-  useCallback,
-  useContext,
-  useState,
-} from 'react';
+import React, { createContext, useCallback, useContext, useState } from 'react';
+
+import propTypes from 'prop-types';
+
+type FilterDataType = {
+  map: string;
+};
 
 interface IMapContextData {
-  mapRef: RefObject<HTMLDivElement> | undefined;
-  getMapRef(ref: RefObject<HTMLDivElement>): string;
+  filterData: FilterDataType;
+  setFilter(option: FilterDataType): void;
+}
+
+interface IMapFilter {
+  map: string;
 }
 
 const MapContext = createContext<IMapContextData>({} as IMapContextData);
 
-const MapProvider: React.FC = () => {
-  const [mapRef, setMapRef] = useState<RefObject<HTMLDivElement>>();
+const MapProvider: React.FC = ({ children }) => {
+  const [filterData, setFilterData] = useState<IMapFilter>({ map: 'states' });
 
-  const getMapRef = useCallback((ref: RefObject<HTMLDivElement>) => {
-    setMapRef(ref);
-
-    return 'ok';
+  const setFilter = useCallback((option: FilterDataType) => {
+    setFilterData(option);
   }, []);
 
-  return <MapContext.Provider value={{ mapRef, getMapRef }} />;
+  return (
+    <MapContext.Provider value={{ filterData, setFilter }}>
+      {children}
+    </MapContext.Provider>
+  );
+};
+
+MapProvider.propTypes = {
+  children: propTypes.node,
+};
+
+MapProvider.defaultProps = {
+  children: undefined,
 };
 
 function useMap(): IMapContextData {
@@ -31,4 +45,4 @@ function useMap(): IMapContextData {
   return context;
 }
 
-export { useMap };
+export { MapProvider, useMap };
