@@ -9,6 +9,7 @@ type FilterDataType = {
 interface IMapContextData {
   filterData: FilterDataType;
   setFilter(option: FilterDataType): void;
+  toFilter(): void;
 }
 
 interface IMapFilter {
@@ -24,8 +25,12 @@ const MapProvider: React.FC = ({ children }) => {
     setFilterData(option);
   }, []);
 
+  const toFilter = useCallback(() => {
+    console.log('Filtrar');
+  }, []);
+
   return (
-    <MapContext.Provider value={{ filterData, setFilter }}>
+    <MapContext.Provider value={{ filterData, setFilter, toFilter }}>
       {children}
     </MapContext.Provider>
   );

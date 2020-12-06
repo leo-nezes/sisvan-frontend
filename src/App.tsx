@@ -3,15 +3,15 @@ import { BrowserRouter } from 'react-router-dom';
 
 import Routes from './Routes';
 
-import { MapProvider } from './hooks/map';
+import AppProvider from './hooks';
 
 import GlobalStyles from './styles';
 
 const App: React.FC = () => (
   <BrowserRouter>
-    <MapProvider>
+    <AppProvider>
       <Routes />
-    </MapProvider>
+    </AppProvider>
 
     <GlobalStyles />
   </BrowserRouter>

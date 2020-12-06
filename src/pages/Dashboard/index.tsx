@@ -4,6 +4,8 @@ import { Slider } from '@material-ui/core';
 import { FiSearch } from 'react-icons/fi';
 
 import { useMap } from '../../hooks/map';
+import { useFilter } from '../../hooks/filter';
+
 import DropdownList from '../../Components/DropdownList';
 import Button from '../../Components/Button';
 import States from '../../Components/GeoMap/States';
@@ -25,11 +27,14 @@ import {
 } from './styles';
 
 const Dashboard: React.FC = () => {
-  const { filterData } = useMap();
   const [value, setValue] = useState<number[]>([1, 50]);
   const [showInformationContainer, setshowInformationContainer] = useState(
     false,
   );
+
+  const { filterData } = useMap();
+  const { toFilter } = useFilter();
+
   const yearNow = new Date();
 
   const style = { button: { width: '320px' }, list: { width: '320px' } };
@@ -42,8 +47,8 @@ const Dashboard: React.FC = () => {
   };
 
   const handleFilter = useCallback(() => {
-    console.log('Clicou');
-  }, []);
+    toFilter();
+  }, [toFilter]);
 
   return (
     <Container>
@@ -97,15 +102,22 @@ const Dashboard: React.FC = () => {
                 <div>
                   Raça/Cor
                   <DropdownList
-                    placeholder="Selecione"
-                    options={['Pardo', 'Preto', 'Branco', 'Amarelo']}
+                    idFilter="taca_cor"
+                    options={[
+                      'Selecione',
+                      'Pardo',
+                      'Preto',
+                      'Branco',
+                      'Amarelo',
+                    ]}
                   />
                 </div>
                 <div>
                   Etnia
                   <DropdownList
-                    placeholder="Selecione"
+                    idFilter="etnia"
                     options={[
+                      'Selecione',
                       'Brancos',
                       'Negros',
                       'Indígenas',
@@ -121,8 +133,9 @@ const Dashboard: React.FC = () => {
                 Idade
                 <div>
                   <DropdownList
-                    placeholder="De"
+                    idFilter="idade_de"
                     options={[
+                      'De',
                       '1',
                       '2',
                       '3',
@@ -136,8 +149,9 @@ const Dashboard: React.FC = () => {
                     ]}
                   />
                   <DropdownList
-                    placeholder="Até"
+                    idFilter="idade_ate"
                     options={[
+                      'Até',
                       '1',
                       '2',
                       '3',
@@ -156,8 +170,9 @@ const Dashboard: React.FC = () => {
                 Altura
                 <div>
                   <DropdownList
-                    placeholder="De"
+                    idFilter="altura_de"
                     options={[
+                      'De',
                       '1',
                       '2',
                       '3',
@@ -171,8 +186,9 @@ const Dashboard: React.FC = () => {
                     ]}
                   />
                   <DropdownList
-                    placeholder="Até"
+                    idFilter="idade_ate"
                     options={[
+                      'Até',
                       '1',
                       '2',
                       '3',
@@ -194,15 +210,16 @@ const Dashboard: React.FC = () => {
               <hr />
               Localidade
               <DropdownList
-                placeholder="Brasil"
+                idFilter="localidade"
                 containerStyle={style}
                 options={['Brasil', 'Para']}
               />
               Unidade
               <DropdownList
-                placeholder="Selecione"
+                idFilter="unidade"
                 containerStyle={style}
                 options={[
+                  'Selecione',
                   'Unidade 1',
                   'Unidade 2',
                   'Unidade 3',
@@ -225,7 +242,7 @@ const Dashboard: React.FC = () => {
               <p>Modelos Estatísticos</p>
               <hr />
               <DropdownList
-                placeholder="Mapa"
+                idFilter="modelos"
                 containerStyle={style}
                 options={['Mapa', 'Histograma', 'Gráfico de Linha']}
               />
@@ -242,7 +259,8 @@ const Dashboard: React.FC = () => {
           <h3>Estados nutricionais</h3>
           <p>Total: 20.000 resultados</p>
           <MapBox>
-            {filterData.map === 'Para' ? <Para /> : <States />}
+            {/* {filterData.map === 'Para' ? <Para /> : <States />} */}
+            <Para />
             {/* {showInformationContainer && (
               <InformationContainer>Informações</InformationContainer>
             )} */}

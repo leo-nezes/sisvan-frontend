@@ -1,8 +1,9 @@
-import React, { HTMLAttributes, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 
 import { FiChevronDown } from 'react-icons/fi';
 
 import { useMap } from '../../hooks/map';
+import { useFilter } from '../../hooks/filter';
 
 import { Container, ButtonBox, OptionsContainer, OptionButton } from './styles';
 
@@ -13,6 +14,7 @@ type IContainerStyleProps = {
 
 interface IDropdownListProps extends HTMLAttributes<HTMLDivElement> {
   containerStyle?: IContainerStyleProps;
+  idFilter: string;
   options: string[];
 }
 
@@ -21,24 +23,31 @@ const DropdownList: React.FC<IDropdownListProps> = ({
     button: Object,
     list: Object,
   },
+  idFilter,
   options,
   ...rest
 }: IDropdownListProps) => {
   const [hide, setHide] = useState(true);
-  const [selectedValue, setSelectedValue] = useState<string>('Selecione');
+  const [selectedValue, setSelectedValue] = useState<string>(options[0]);
 
   const { button, list } = containerStyle;
-  const { setFilter } = useMap();
+  const { setFilter: setFilterMap } = useMap();
+  const { filterObject, setFilter } = useFilter();
 
   const handleHide = (): void => {
     setHide(!hide);
   };
 
   const handleSetOption = (option: string): void => {
-    setFilter({ map: option });
+    setFilterMap({ map: option });
     setSelectedValue(option);
     setHide(!hide);
   };
+
+  useEffect(() => {
+    const newObjectFilter = { ...filterObject, idFilter: selectedValue };
+    setFilter(newObjectFilter);
+  }, []);
 
   return (
     <Container {...rest}>
