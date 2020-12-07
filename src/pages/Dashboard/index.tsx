@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useCallback } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 
 import { Slider } from '@material-ui/core';
 import { FiSearch } from 'react-icons/fi';
@@ -46,9 +46,9 @@ const Dashboard: React.FC = () => {
     setValue(newValue as number[]);
   };
 
-  const handleFilter = useCallback(() => {
+  const handleFilter = (): void => {
     toFilter();
-  }, [toFilter]);
+  };
 
   return (
     <Container>
@@ -102,7 +102,7 @@ const Dashboard: React.FC = () => {
                 <div>
                   Raça/Cor
                   <DropdownList
-                    idFilter="taca_cor"
+                    idFilter="raca_cor"
                     options={[
                       'Selecione',
                       'Pardo',

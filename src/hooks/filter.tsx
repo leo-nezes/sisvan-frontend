@@ -15,9 +15,21 @@ const FilterContext = createContext<IFilterContextData>(
 const FilterProvider: React.FC = ({ children }) => {
   const [filterObject, setFilterObject] = useState({});
 
-  const setFilter = useCallback((data: object) => {
-    setFilterObject(data);
-  }, []);
+  const setFilter = (data: object): void => {
+    let newFilters = {};
+    const filters = localStorage.getItem('@SISVAN:filter');
+
+    if (filters) {
+      newFilters = { ...JSON.parse(filters) };
+    }
+
+    localStorage.setItem(
+      '@SISVAN:filter',
+      JSON.stringify({ ...newFilters, ...data }),
+    );
+
+    setFilterObject({ ...newFilters, ...data });
+  };
 
   const toFilter = useCallback(() => {
     console.log(filterObject);

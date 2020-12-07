@@ -2,7 +2,6 @@ import React, { HTMLAttributes, useEffect, useState } from 'react';
 
 import { FiChevronDown } from 'react-icons/fi';
 
-import { useMap } from '../../hooks/map';
 import { useFilter } from '../../hooks/filter';
 
 import { Container, ButtonBox, OptionsContainer, OptionButton } from './styles';
@@ -28,10 +27,10 @@ const DropdownList: React.FC<IDropdownListProps> = ({
   ...rest
 }: IDropdownListProps) => {
   const [hide, setHide] = useState(true);
+  const [filterID, setFilterID] = useState(idFilter);
   const [selectedValue, setSelectedValue] = useState<string>(options[0]);
 
   const { button, list } = containerStyle;
-  const { setFilter: setFilterMap } = useMap();
   const { filterObject, setFilter } = useFilter();
 
   const handleHide = (): void => {
@@ -39,14 +38,12 @@ const DropdownList: React.FC<IDropdownListProps> = ({
   };
 
   const handleSetOption = (option: string): void => {
-    setFilterMap({ map: option });
     setSelectedValue(option);
     setHide(!hide);
   };
 
   useEffect(() => {
-    const newObjectFilter = { ...filterObject, idFilter: selectedValue };
-    setFilter(newObjectFilter);
+    setFilter({ [filterID]: selectedValue });
   }, []);
 
   return (
@@ -62,7 +59,7 @@ const DropdownList: React.FC<IDropdownListProps> = ({
               key={option}
               type="button"
               value={option}
-              onClick={() => handleSetOption(option)}
+              onClick={() => handleSetOption(idFilter)}
             >
               {option}
             </OptionButton>
