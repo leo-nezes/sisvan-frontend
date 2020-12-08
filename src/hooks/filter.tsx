@@ -2,9 +2,13 @@ import React, { createContext, useCallback, useContext, useState } from 'react';
 
 import propTypes from 'prop-types';
 
+type FilterObjectType = {
+  [key: string]: string;
+};
+
 interface IFilterContextData {
-  filterObject: object;
-  setFilter(data: object): void;
+  filterObject: FilterObjectType;
+  setFilter(data: FilterObjectType): void;
   toFilter(): void;
 }
 
@@ -15,7 +19,7 @@ const FilterContext = createContext<IFilterContextData>(
 const FilterProvider: React.FC = ({ children }) => {
   const [filterObject, setFilterObject] = useState({});
 
-  const setFilter = (data: object): void => {
+  const setFilter = (data: FilterObjectType): void => {
     let newFilters = {};
     const filters = localStorage.getItem('@SISVAN:filter');
 

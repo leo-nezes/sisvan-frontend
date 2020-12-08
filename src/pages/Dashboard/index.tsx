@@ -3,7 +3,6 @@ import React, { useState, ChangeEvent } from 'react';
 import { Slider } from '@material-ui/core';
 import { FiSearch } from 'react-icons/fi';
 
-import { useMap } from '../../hooks/map';
 import { useFilter } from '../../hooks/filter';
 
 import DropdownList from '../../Components/DropdownList';
@@ -27,14 +26,12 @@ import {
 } from './styles';
 
 const Dashboard: React.FC = () => {
+  const { filterObject, toFilter } = useFilter();
+
   const [value, setValue] = useState<number[]>([1, 50]);
   const [showInformationContainer, setshowInformationContainer] = useState(
     false,
   );
-
-  const { filterData } = useMap();
-  const { toFilter } = useFilter();
-
   const yearNow = new Date();
 
   const style = { button: { width: '320px' }, list: { width: '320px' } };
@@ -186,7 +183,7 @@ const Dashboard: React.FC = () => {
                     ]}
                   />
                   <DropdownList
-                    idFilter="idade_ate"
+                    idFilter="altura_ate"
                     options={[
                       'Até',
                       '1',
@@ -259,8 +256,7 @@ const Dashboard: React.FC = () => {
           <h3>Estados nutricionais</h3>
           <p>Total: 20.000 resultados</p>
           <MapBox>
-            {/* {filterData.map === 'Para' ? <Para /> : <States />} */}
-            <Para />
+            {filterObject.localidade === 'Para' ? <Para /> : <States />}
             {/* {showInformationContainer && (
               <InformationContainer>Informações</InformationContainer>
             )} */}

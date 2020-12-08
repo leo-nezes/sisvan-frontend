@@ -27,23 +27,23 @@ const DropdownList: React.FC<IDropdownListProps> = ({
   ...rest
 }: IDropdownListProps) => {
   const [hide, setHide] = useState(true);
-  const [filterID, setFilterID] = useState(idFilter);
   const [selectedValue, setSelectedValue] = useState<string>(options[0]);
 
   const { button, list } = containerStyle;
-  const { filterObject, setFilter } = useFilter();
+  const { setFilter } = useFilter();
 
   const handleHide = (): void => {
     setHide(!hide);
   };
 
-  const handleSetOption = (option: string): void => {
+  const handleSetOption = (idFilterOption: string, option: string): void => {
+    setFilter({ [idFilterOption]: option });
     setSelectedValue(option);
     setHide(!hide);
   };
 
   useEffect(() => {
-    setFilter({ [filterID]: selectedValue });
+    setFilter({ [idFilter]: selectedValue });
   }, []);
 
   return (
@@ -59,7 +59,7 @@ const DropdownList: React.FC<IDropdownListProps> = ({
               key={option}
               type="button"
               value={option}
-              onClick={() => handleSetOption(idFilter)}
+              onClick={() => handleSetOption(idFilter, option)}
             >
               {option}
             </OptionButton>
