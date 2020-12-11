@@ -3,9 +3,12 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 import { FilterProvider } from './filter';
+import { MapProvider } from './map';
 
 const AppProvider: React.FC = ({ children }) => (
-  <FilterProvider>{children}</FilterProvider>
+  <FilterProvider>
+    <MapProvider>{children}</MapProvider>
+  </FilterProvider>
 );
 
 AppProvider.propTypes = {
