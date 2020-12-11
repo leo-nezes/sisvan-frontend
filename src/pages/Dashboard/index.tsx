@@ -4,10 +4,11 @@ import { Slider } from '@material-ui/core';
 import { FiSearch } from 'react-icons/fi';
 
 import { useFilter } from '../../hooks/filter';
+import { useMap } from '../../hooks/map';
 
 import DropdownList from '../../Components/DropdownList';
 import Button from '../../Components/Button';
-import States from '../../Components/GeoMap/States';
+import Brazil from '../../Components/GeoMap/Brazil';
 import Para from '../../Components/GeoMap/Para';
 
 import {
@@ -19,6 +20,7 @@ import {
   MapContainer,
   MapBox,
   InformationContainer,
+  Description,
   PatientsData,
   RegionPeriod,
   StatisticalModels,
@@ -27,11 +29,9 @@ import {
 
 const Dashboard: React.FC = () => {
   const { filterObject, toFilter } = useFilter();
+  const { mapContainerInformation } = useMap();
 
   const [value, setValue] = useState<number[]>([1, 50]);
-  const [showInformationContainer, setshowInformationContainer] = useState(
-    false,
-  );
   const yearNow = new Date();
 
   const style = { button: { width: '320px' }, list: { width: '320px' } };
@@ -256,10 +256,115 @@ const Dashboard: React.FC = () => {
           <h3>Estados nutricionais</h3>
           <p>Total: 20.000 resultados</p>
           <MapBox>
-            {filterObject.localidade === 'Para' ? <Para /> : <States />}
-            {/* {showInformationContainer && (
-              <InformationContainer>Informações</InformationContainer>
-            )} */}
+            {filterObject.localidade === 'Para' ? <Para /> : <Brazil />}
+
+            {mapContainerInformation && (
+              <InformationContainer>
+                <h3>ABAETETUBA</h3>
+                <Description>Total: 5202 resultados</Description>
+                <h4>Peso X Idade</h4>
+                <hr />
+                <div>
+                  Peso muito baixo para a idade
+                  <p>Quantidade: 73</p>
+                  <p>Procentagem: 1.4%</p>
+                </div>
+                <div>
+                  Peso baixo para a idade
+                  <p>Quantidade: 245</p>
+                  <p>Porcentagem: 4.71%</p>
+                </div>
+                <div>
+                  Peso adequado ou eutrófico
+                  <p>Quantidade: 4618</p>
+                  <p>Porcentagem: 88.77%</p>
+                </div>
+                <div>
+                  Peso elevado para a idade
+                  <p>Quantidade: 266</p>
+                  <p>Porcentagem: 5.11%</p>
+                </div>
+
+                <h4>Peso X Altura</h4>
+                <hr />
+                <div>
+                  Magreza acentuada
+                  <p>Quantidade: 136</p>
+                  <p>Procentagem: 2.61%</p>
+                </div>
+                <div>
+                  Magreza
+                  <p>Quantidade: 166</p>
+                  <p>Porcentagem: 3.19%</p>
+                </div>
+                <div>
+                  Peso adequado ou eutrófico
+                  <p>Quantidade: 3191</p>
+                  <p>Porcentagem: 61.34%</p>
+                </div>
+                <div>
+                  Risco de sobrepeso
+                  <p>Quantidade: 399</p>
+                  <p>Porcentagem: 7.67%</p>
+                </div>
+                <div>
+                  Obesidade
+                  <p>Quantidade: 362</p>
+                  <p>Porcentagem: 6.96%</p>
+                </div>
+
+                <h4>Altura X Idade</h4>
+                <hr />
+                <div>
+                  Altura muito baixa para a idade
+                  <p>Quantidade: 487</p>
+                  <p>Procentagem: 9.36%</p>
+                </div>
+                <div>
+                  Altura baixa para a idade
+                  <p>Quantidade: 717</p>
+                  <p>Porcentagem: 13.78%</p>
+                </div>
+                <div>
+                  Altura adequada para a idade
+                  <p>Quantidade: 3998</p>
+                  <p>Porcentagem: 76.86%</p>
+                </div>
+
+                <h4>IMC X Idade</h4>
+                <hr />
+                <div>
+                  Magreza acentuada
+                  <p>Quantidade: 180</p>
+                  <p>Procentagem: 3.46%</p>
+                </div>
+                <div>
+                  Magreza
+                  <p>Quantidade: 168</p>
+                  <p>Porcentagem: 3.23%</p>
+                </div>
+                <div>
+                  Eutrofia
+                  <p>Quantidade: 2964</p>
+                  <p>Porcentagem: 56.98%</p>
+                </div>
+                <div>
+                  Risco de sobrepeso
+                  <p>Quantidade: 1.035</p>
+                  <p>Porcentagem: 19.9%</p>
+                </div>
+                <div>
+                  Sobrepeso
+                  <p>Quantidade: 466</p>
+                  <p>Porcentagem: 8.96%</p>
+                </div>
+                <div>
+                  Obesidade
+                  <p>Quantidade: 389</p>
+                  <p>Porcentagem: 7.48%</p>
+                </div>
+              </InformationContainer>
+            )}
           </MapBox>
         </MapContainer>
       </Content>
