@@ -1,0 +1,33 @@
+{
+  "cities": {
+    "Abaetetuba": {
+      "pesoIdade": [
+        {"descricao": "Peso muito baixo para a idade", "quantidade": 73, "porcentagem": 1.4},
+        {"descricao": "Peso baixo para a idade", "quantidade": 245, "porcentagem": 4.71},
+        {"descricao": "Peso adequado ou eutrófico", "quantidade": 4618, "porcentagem": 88.77},
+        {"descricao": "Peso elevado para a idade", "quantidade": 266, "porcentagem": 5.11}
+      ],
+      "pesoAltura": [
+        {"descricao": "Magreza acentuada", "quantidade": 136, "porcentagem": 2.61},
+        {"descricao": "Magreza", "quantidade": 166, "porcentagem": 3.19},
+        {"descricao": "Peso adequado ou eutrófico", "quantidade": 3191, "porcentagem": 61.34},
+        {"descricao": "Risco de sobrepeso", "quantidade": 399, "porcentagem": 7.67},
+        {"descricao": "Obesidade", "quantidade": 362, "porcentagem": 6.96}
+      ],
+      "alturaIdade": [
+        {"descricao": "Altura muito baixa para a idade", "quantidade": 487, "porcentagem": 9.36},
+        {"descricao": "Altura baixa para a idade", "quantidade": 717, "porcentagem": 13.78},
+        {"descricao": "Altura adequada para a idade", "quantidade": 3998, "porcentagem": 76.86}
+      ],
+      "imcIdade": [
+        {"descricao": "Magreza acentuada", "quantidade": 180, "porcentagem": 3.46},
+        {"descricao": "Magreza", "quantidade": 168, "porcentagem": 3.23},
+        {"descricao": "Eutrofia", "quantidade": 2964, "porcentagem": 56.98},
+        {"descricao": "Risco de sobrepeso", "quantidade": 1035, "porcentagem": 19.9},
+        {"descricao": "Sobrepeso", "quantidade": 466, "porcentagem": 8.96},
+        {"descricao": "Obesidade", "quantidade": 389, "porcentagem": 7.48}
+      ]
+    },
+    "Leonardo": {}
+  }
+}

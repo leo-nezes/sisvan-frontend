@@ -15,7 +15,7 @@ type DataType = {
 const Para: React.FC = () => {
   const [widthMap, setWidthMap] = useState('836');
 
-  const { showContainerInformation } = useMap();
+  const { showContainerInformation, loadInformation } = useMap();
 
   const paraCities = [
     { id: '1500107', name: 'ABAETETUBA', population: 1492745 },
@@ -163,8 +163,8 @@ const Para: React.FC = () => {
     { id: '1508407', name: 'XINGUARA', population: 3310 },
   ];
 
-  const handleShowLocationInformation = (id: string): void => {
-    console.log(id);
+  const handleShowLocationInformation = (name: string): void => {
+    loadInformation(name);
 
     setWidthMap(() => {
       if (widthMap === '836') return '556';
@@ -184,7 +184,7 @@ const Para: React.FC = () => {
     width: widthMap,
     height: '768',
     on: {
-      click: (data: DataType) => handleShowLocationInformation(data.id),
+      click: (data: DataType) => handleShowLocationInformation(data.name),
     },
     tooltipConfig: {
       title: useCallback((data: DataType) => {

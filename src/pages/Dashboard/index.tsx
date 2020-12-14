@@ -267,7 +267,7 @@ const Dashboard: React.FC = () => {
                 <div>
                   Peso muito baixo para a idade
                   <p>Quantidade: 73</p>
-                  <p>Procentagem: 1.4%</p>
+                  <p>Porcentagem: 1.4%</p>
                 </div>
                 <div>
                   Peso baixo para a idade
@@ -290,7 +290,7 @@ const Dashboard: React.FC = () => {
                 <div>
                   Magreza acentuada
                   <p>Quantidade: 136</p>
-                  <p>Procentagem: 2.61%</p>
+                  <p>Porcentagem: 2.61%</p>
                 </div>
                 <div>
                   Magreza
@@ -318,7 +318,7 @@ const Dashboard: React.FC = () => {
                 <div>
                   Altura muito baixa para a idade
                   <p>Quantidade: 487</p>
-                  <p>Procentagem: 9.36%</p>
+                  <p>Porcentagem: 9.36%</p>
                 </div>
                 <div>
                   Altura baixa para a idade
@@ -336,7 +336,7 @@ const Dashboard: React.FC = () => {
                 <div>
                   Magreza acentuada
                   <p>Quantidade: 180</p>
-                  <p>Procentagem: 3.46%</p>
+                  <p>Porcentagem: 3.46%</p>
                 </div>
                 <div>
                   Magreza
