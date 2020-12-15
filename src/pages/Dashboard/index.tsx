@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent } from 'react';
 import { Slider } from '@material-ui/core';
 import { FiSearch } from 'react-icons/fi';
 
+import { BlobProvider } from '@react-pdf/renderer';
 import { useFilter } from '../../hooks/filter';
 import { useMap } from '../../hooks/map';
 
@@ -10,6 +11,8 @@ import DropdownList from '../../Components/DropdownList';
 import Button from '../../Components/Button';
 import Brazil from '../../Components/GeoMap/Brazil';
 import Para from '../../Components/GeoMap/Para';
+
+import { PDF } from '../../Components/PDF';
 
 import {
   Container,
@@ -251,7 +254,6 @@ const Dashboard: React.FC = () => {
             </Button>
           </FilterBox>
         </FilterContainer>
-
         <MapContainer>
           <h3>Estados nutricionais</h3>
           <p>Total: 20.000 resultados</p>
@@ -260,6 +262,18 @@ const Dashboard: React.FC = () => {
 
             {mapContainerInformation && (
               <InformationContainer>
+                <BlobProvider document={PDF}>
+                  {({ url }) => (
+                    <a
+                      href={url != null ? url : ''}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Open in new tab
+                    </a>
+                  )}
+                </BlobProvider>
+
                 <h3>ABAETETUBA</h3>
                 <Description>Total: 5202 resultados</Description>
                 <h4>Peso X Idade</h4>
