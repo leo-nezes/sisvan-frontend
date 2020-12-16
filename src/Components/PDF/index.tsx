@@ -1,21 +1,20 @@
 import React from 'react';
 import { Page, Text, View, Document } from '@react-pdf/renderer';
 
+import Header from './Header';
+import Table from './Table';
+
 import { styles } from './styles';
 
 export const PDF = (
   <Document>
     <Page size="A4" style={styles.page}>
-      <Text style={styles.title}>
-        Sistema de Vigilância Alimentar e Nutricional
-      </Text>
-      <Text>INDICES NUTRICIONAIS</Text>
-      <Text>Municipio: Ababetatuba - Pará</Text>
-      <Text>Total: 5202 resultados</Text>
+      <Header test="Teste" />
       <View style={styles.section}>
-        <View>
-          <Text>Peso X Idade</Text>
-          {/* <View>
+        <Table />
+        {/* <View> */}
+        {/* <Text>Peso X Idade</Text> */}
+        {/* <View>
             <Text>Peso muito baixo para a idade</Text>
             <View>
               <Text>Quantidade:</Text>
@@ -26,7 +25,7 @@ export const PDF = (
               <Text>1.4%</Text>
             </View>
           </View> */}
-          {/* <View>
+        {/* <View>
           <Text>Peso muito baixo para a idade</Text>
           <View>
             <Text>Quantidade:</Text>
@@ -59,8 +58,8 @@ export const PDF = (
             <Text>1.4%</Text>
           </View>
         </View> */}
-        </View>
-        <View>Gráfico</View>
+        {/* </View> */}
+        {/* <View style={styles.section}>Gráfico</View> */}
       </View>
     </Page>
   </Document>

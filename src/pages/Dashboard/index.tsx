@@ -258,7 +258,9 @@ const Dashboard: React.FC = () => {
           <h3>Estados nutricionais</h3>
           <p>Total: 20.000 resultados</p>
           <MapBox>
-            {filterObject.localidade === 'Para' ? <Para /> : <Brazil />}
+            {/* {filterObject.localidade === 'Para' ? <Para /> : <Brazil />} */}
+
+            <Para />
 
             {mapContainerInformation && (
               <InformationContainer>

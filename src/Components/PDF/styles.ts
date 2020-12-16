@@ -13,7 +13,8 @@ export const styles = StyleSheet.create({
     marginVertical: 8,
   },
   section: {
-    marginVertical: 8,
-    flexGrow: 1,
+    // flexGrow: 1,
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
