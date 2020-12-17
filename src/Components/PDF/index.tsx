@@ -1,65 +1,24 @@
 import React from 'react';
-import { Page, Text, View, Document } from '@react-pdf/renderer';
+import { Page, View, Document } from '@react-pdf/renderer';
 
 import Header from './Header';
 import Table from './Table';
 
 import { styles } from './styles';
 
+const dataSubTitle = [
+  { subtitle: 'Peso muito baixo para a idade', dataSubTitle: [73, 1.4] },
+  { subtitle: 'Peso baixo para a idade', dataSubTitle: [245, 4.71] },
+  { subtitle: 'Peso adequado ou eutrófico', dataSubTitle: [4618, 88.77] },
+  { subtitle: 'Peso elevado para a idade', dataSubTitle: [266, 5.11] },
+];
+
 export const PDF = (
   <Document>
     <Page size="A4" style={styles.page}>
       <Header test="Teste" />
       <View style={styles.section}>
-        <Table />
-        {/* <View> */}
-        {/* <Text>Peso X Idade</Text> */}
-        {/* <View>
-            <Text>Peso muito baixo para a idade</Text>
-            <View>
-              <Text>Quantidade:</Text>
-              <Text>Porcentagem:</Text>
-            </View>
-            <View>
-              <Text>73</Text>
-              <Text>1.4%</Text>
-            </View>
-          </View> */}
-        {/* <View>
-          <Text>Peso muito baixo para a idade</Text>
-          <View>
-            <Text>Quantidade:</Text>
-            <Text>Porcentagem:</Text>
-          </View>
-          <View>
-            <Text>73</Text>
-            <Text>1.4%</Text>
-          </View>
-        </View>
-        <View>
-          <Text>Peso muito baixo para a idade</Text>
-          <View>
-            <Text>Quantidade:</Text>
-            <Text>Porcentagem:</Text>
-          </View>
-          <View>
-            <Text>73</Text>
-            <Text>1.4%</Text>
-          </View>
-        </View>
-        <View>
-          <Text>Peso muito baixo para a idade</Text>
-          <View>
-            <Text>Quantidade:</Text>
-            <Text>Porcentagem:</Text>
-          </View>
-          <View>
-            <Text>73</Text>
-            <Text>1.4%</Text>
-          </View>
-        </View> */}
-        {/* </View> */}
-        {/* <View style={styles.section}>Gráfico</View> */}
+        <Table title="Peso X Idade" dataSubTitle={dataSubTitle} />
       </View>
     </Page>
   </Document>
