@@ -6,11 +6,17 @@ import Table from './Table';
 
 import { styles } from './styles';
 
-const dataSubTitle = [
-  { subtitle: 'Peso muito baixo para a idade', dataSubTitle: [73, 1.4] },
-  { subtitle: 'Peso baixo para a idade', dataSubTitle: [245, 4.71] },
-  { subtitle: 'Peso adequado ou eutrófico', dataSubTitle: [4618, 88.77] },
-  { subtitle: 'Peso elevado para a idade', dataSubTitle: [266, 5.11] },
+const dataTable = [
+  {
+    title: 'Peso X Idade',
+    subtitleProps: [
+      { subtitle: 'Peso muito baixo para a idade', dataSubtitle: [73, 1.4] },
+      { subtitle: 'Peso muito baixo para a idade', dataSubtitle: [73, 1.4] },
+      { subtitle: 'Peso baixo para a idade', dataSubtitle: [245, 4.71] },
+      { subtitle: 'Peso adequado ou eutrófico', dataSubtitle: [4618, 88.77] },
+      { subtitle: 'Peso elevado para a idade', dataSubtitle: [266, 5.11] },
+    ],
+  },
 ];
 
 export const PDF = (
@@ -18,7 +24,7 @@ export const PDF = (
     <Page size="A4" style={styles.page}>
       <Header test="Teste" />
       <View style={styles.section}>
-        <Table title="Peso X Idade" dataSubTitle={dataSubTitle} />
+        <Table tableData={dataTable} />
       </View>
     </Page>
   </Document>

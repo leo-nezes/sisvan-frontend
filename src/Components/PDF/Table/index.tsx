@@ -46,62 +46,73 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
   },
   tableCell: {
-    // marginTop: 5,
     marginLeft: 5,
     fontSize: 10,
   },
 });
 
-interface ISubTitle {
+interface ISubtitleProps {
   subtitle: string;
-  dataSubTitle: number[];
+  dataSubtitle: number[];
+}
+
+interface ITableData {
+  title: string;
+  subtitleProps: ISubtitleProps[];
 }
 
 interface ITableProps {
-  title: string;
-  dataSubTitle: ISubTitle[];
+  tableData: ITableData[];
 }
 
-const Table = ({ title, dataSubTitle }: ITableProps): any => {
-  return (
-    <View style={styles.table}>
-      <View style={styles.tableRow}>
-        <View style={styles.tableColTitle}>
-          <Text style={styles.tableCellTitle}>{title}</Text>
+const Table = ({ tableData }: ITableProps): any => {
+  return tableData.map((table) => {
+    return (
+      <View style={styles.table}>
+        <View style={styles.tableRow}>
+          <View style={styles.tableColTitle}>
+            <Text style={styles.tableCellTitle}>{table.title}</Text>
+          </View>
         </View>
+
+        {table.subtitleProps.map((subtitle) => (
+          <>
+            <View>
+              <View style={styles.tableColSubTitle}>
+                <Text style={styles.tableCellSubTitle}>
+                  {subtitle.subtitle}
+                </Text>
+              </View>
+            </View>
+
+            <View style={styles.tableRowData}>
+              <View style={styles.tableRow}>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>Quantidade:</Text>
+                </View>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>
+                    {subtitle.dataSubtitle[0]}
+                  </Text>
+                </View>
+              </View>
+
+              <View style={styles.tableRow}>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>Porcentagem:</Text>
+                </View>
+                <View style={styles.tableCol}>
+                  <Text style={styles.tableCell}>
+                    {subtitle.dataSubtitle[1]}
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </>
+        ))}
       </View>
-
-      {dataSubTitle.map((data) => (
-        <>
-          <View>
-            <View style={styles.tableColSubTitle}>
-              <Text style={styles.tableCellSubTitle}>{data.subtitle}</Text>
-            </View>
-          </View>
-
-          <View style={styles.tableRowData}>
-            <View style={styles.tableRow}>
-              <View style={styles.tableCol}>
-                <Text style={styles.tableCell}>Quantidade:</Text>
-              </View>
-              <View style={styles.tableCol}>
-                <Text style={styles.tableCell}>{data.dataSubTitle[0]}</Text>
-              </View>
-            </View>
-
-            <View style={styles.tableRow}>
-              <View style={styles.tableCol}>
-                <Text style={styles.tableCell}>Porcentagem:</Text>
-              </View>
-              <View style={styles.tableCol}>
-                <Text style={styles.tableCell}>{data.dataSubTitle[1]}</Text>
-              </View>
-            </View>
-          </View>
-        </>
-      ))}
-    </View>
-  );
+    );
+  });
 };
 
 export default Table;
