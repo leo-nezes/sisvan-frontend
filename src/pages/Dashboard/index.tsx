@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent } from 'react';
 
 import { Slider } from '@material-ui/core';
-import { FiSearch } from 'react-icons/fi';
+import { FiSearch, FiPrinter } from 'react-icons/fi';
 
 import { BlobProvider } from '@react-pdf/renderer';
 import { useFilter } from '../../hooks/filter';
@@ -258,21 +258,47 @@ const Dashboard: React.FC = () => {
           <h3>Estados nutricionais</h3>
           <p>Total: 20.000 resultados</p>
           <MapBox>
-            {/* {filterObject.localidade === 'Para' ? <Para /> : <Brazil />} */}
-
-            <Para />
+            {filterObject.localidade === 'Para' ? <Para /> : <Brazil />}
 
             {mapContainerInformation && (
               <InformationContainer>
                 <BlobProvider document={PDF}>
                   {({ url }) => (
-                    <a
-                      href={url != null ? url : ''}
-                      target="_blank"
-                      rel="noreferrer"
+                    <div
+                      style={{
+                        // display: 'flex',
+                        width: '50%',
+                        padding: '8px',
+                        margin: '8px auto',
+                        borderRadius: '8px',
+                        // alignItems: 'center',
+                        // justifyContent: 'center',
+                        background: '#00ab5c',
+                        cursor: 'ponter',
+                      }}
                     >
-                      Open in new tab
-                    </a>
+                      <a
+                        href={url != null ? url : ''}
+                        target="_blank"
+                        rel="noreferrer"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: '#f6f4f8',
+                          textDecoration: 'none',
+                        }}
+                      >
+                        <FiPrinter
+                          style={{
+                            margin: 'auto 8px',
+                            fontSize: '18px',
+                            color: '#f6f4f8',
+                          }}
+                        />
+                        Gerar PDF
+                      </a>
+                    </div>
                   )}
                 </BlobProvider>
 
