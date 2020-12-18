@@ -7,29 +7,24 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderStyle: 'solid',
     borderWidth: 1,
-    // borderRightWidth: 0,
-    // borderBottomWidth: 0,
   },
   titleSession: {
     width: '100%',
     borderStyle: 'solid',
-    // borderWidth: 1,
     borderBottom: 1,
-    // borderTopWidth: 0,
-    // borderLeftWidth: 0,
-    // borderRightWidth: 0,
   },
   contentSession: {
     width: '100%',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    backgroundColor: 'tomato',
+    flexDirection: 'row',
+    borderWidth: 0,
   },
   dataContainer: {
     width: '50%',
-    borderStyle: 'solid',
-    borderWidth: 1,
-    backgroundColor: 'yellow',
+    borderWidth: 0,
+  },
+  imageContainer: {
+    width: '50%',
+    borderWidth: 0,
   },
   tableColTitle: {
     width: '100%',
@@ -40,17 +35,16 @@ const styles = StyleSheet.create({
   },
   tableCellTitle: {
     margin: 'auto',
-    fontSize: 12,
+    fontSize: 14,
   },
   tableColSubTitle: {
-    // width: '50%',
     borderStyle: 'solid',
     borderWidth: 1,
     borderLeftWidth: 0,
     borderTopWidth: 0,
   },
   tableCellSubTitle: {
-    fontSize: 10,
+    fontSize: 12,
     margin: 5,
   },
   tableRowData: {
@@ -67,13 +61,12 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
   },
   tableCell: {
-    marginLeft: 5,
+    margin: 5,
     fontSize: 10,
   },
   image: {
-    width: 50,
-    height: 50,
-    marginVertical: 15,
+    flexGrow: 1,
+    margin: 5,
   },
 });
 
@@ -95,7 +88,10 @@ interface ITableProps {
 const Table = ({ tableData }: ITableProps): any => {
   return tableData.map((table, index) => {
     return (
-      <View style={styles.tableContainer} break={index === 2}>
+      <View
+        style={styles.tableContainer}
+        break={index !== 0 && index % 2 === 0}
+      >
         <View style={styles.tableRow}>
           <View style={styles.titleSession}>
             <Text style={styles.tableCellTitle}>{table.title}</Text>
@@ -129,14 +125,17 @@ const Table = ({ tableData }: ITableProps): any => {
                       <Text style={styles.tableCell}>Porcentagem:</Text>
                     </View>
                     <View style={styles.tableCol}>
+                      {/* eslint-disable */}
                       <Text style={styles.tableCell}>
-                        {subtitle.dataSubtitle[1]}
+                        {subtitle.dataSubtitle[1]}%
                       </Text>
                     </View>
                   </View>
                 </View>
               </>
             ))}
+          </View>
+          <View style={styles.imageContainer}>
             <Image style={styles.image} src={table.img} />
           </View>
         </View>

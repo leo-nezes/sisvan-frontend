@@ -10,15 +10,9 @@ export const styles = StyleSheet.create({
   },
 });
 
-interface ITest {
-  test: string;
-}
-
-const Header = ({ test }: ITest): any => {
-  console.log(test);
-
+const Header = (): any => {
   return (
-    <View>
+    <View fixed>
       <Text style={styles.title}>
         Sistema de Vigilância Alimentar e Nutricional
       </Text>

@@ -3,14 +3,17 @@ import { Page, View, Document } from '@react-pdf/renderer';
 
 import Header from './Header';
 import Table from './Table';
-import img from '../../data/pesoXIdade.png';
+import pesoXIdade from '../../data/pesoXIdade.png';
+import pesoXAltura from '../../data/pesoXAltura.png';
+import alturaXIdade from '../../data/alturaXIdade.png';
+import imcXIdade from '../../data/imcXIdade.png';
 
 import { styles } from './styles';
 
 const dataTable = [
   {
     title: 'Peso X Idade',
-    img,
+    img: pesoXIdade,
     subtitleProps: [
       { subtitle: 'Peso muito baixo para a idade', dataSubtitle: [73, 1.4] },
       { subtitle: 'Peso baixo para a idade', dataSubtitle: [245, 4.71] },
@@ -20,7 +23,7 @@ const dataTable = [
   },
   {
     title: 'Peso X Altura',
-    img: '../../data/pesoXIdade.png',
+    img: pesoXAltura,
     subtitleProps: [
       { subtitle: 'Magreza acentuada', dataSubtitle: [136, 2.61] },
       { subtitle: 'Magreza', dataSubtitle: [166, 3.19] },
@@ -31,7 +34,7 @@ const dataTable = [
   },
   {
     title: 'Altura X Idade',
-    img: '../../data/pesoXIdade.png',
+    img: alturaXIdade,
     subtitleProps: [
       {
         subtitle: 'Altura muito baixa para a idade',
@@ -43,7 +46,7 @@ const dataTable = [
   },
   {
     title: 'IMC X Idade',
-    img: '../../data/pesoXIdade.png',
+    img: imcXIdade,
     subtitleProps: [
       { subtitle: 'Magreza acentuada', dataSubtitle: [180, 3.48] },
       { subtitle: 'Magreza', dataSubtitle: [168, 3.23] },
@@ -58,7 +61,7 @@ const dataTable = [
 export const PDF = (
   <Document>
     <Page size="A4" style={styles.page}>
-      <Header test="Teste" />
+      <Header />
       <View style={styles.section}>
         <Table tableData={dataTable} />
       </View>

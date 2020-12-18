@@ -2,8 +2,8 @@ import { StyleSheet } from '@react-pdf/renderer';
 
 export const styles = StyleSheet.create({
   page: {
-    marginHorizontal: 16,
-    marginVertical: 16,
+    paddingHorizontal: 16,
+    paddingVertical: 24,
     fontSize: 12,
   },
   title: {
