@@ -59,7 +59,7 @@ const dataTable = [
 ];
 
 export const PDF = (
-  <Document>
+  <Document title="SISVAN - Índices Nutricionais">
     <Page size="A4" style={styles.page}>
       <Header />
       <View style={styles.section}>
