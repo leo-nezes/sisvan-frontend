@@ -190,7 +190,6 @@ const Para: React.FC = () => {
       title: useCallback((data: DataType) => {
         return data.name;
       }, []),
-      // tbody: [['Leonardo']],
     },
   };
 

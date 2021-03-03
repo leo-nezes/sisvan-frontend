@@ -266,15 +266,12 @@ const Dashboard: React.FC = () => {
                   {({ url }) => (
                     <div
                       style={{
-                        // display: 'flex',
                         width: '50%',
                         padding: '8px',
                         margin: '8px auto',
                         borderRadius: '8px',
-                        // alignItems: 'center',
-                        // justifyContent: 'center',
                         background: '#00ab5c',
-                        cursor: 'ponter',
+                        cursor: 'pointer',
                       }}
                     >
                       <a

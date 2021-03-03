@@ -1,7 +1,8 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 
 import { Geomap } from 'd3plus-react';
 
+import { useMap } from '../../../hooks/map';
 import brStates from '../../../data/br-states.json';
 
 type DataType = {
@@ -11,6 +12,8 @@ type DataType = {
 };
 
 const Brazil: React.FC = () => {
+  const { showContainerInformation, mapContainerInformation } = useMap();
+
   const brStatesData = [
     { id: 'AC', name: 'Acre', population: 4830620 },
     { id: 'AL', name: 'Alagoas', population: 733375 },
@@ -47,25 +50,12 @@ const Brazil: React.FC = () => {
     topojson: brStates,
     tiles: false,
     ocean: 'transparent',
-    // colorScaleConfig: { color: ['red', 'orange', 'yellow', 'green', 'blue'] },
     width: '836',
-    // width: '556',
     height: '768',
-    // shapeConfig: {
-    //   label: useCallback((data: DataType) => {
-    //     return data.name;
-    //   }, []),
-    // labelConfig: {
-    //   fontFamily: 'Roboto-Slab',
-    //   fontMax: 1000,
-    // },
-    // },
-
     tooltipConfig: {
       title: useCallback((data: DataType) => {
         return data.name;
       }, []),
-      // tbody: [['Leonardo']],
     },
     on: {
       hover: useCallback((data) => {
@@ -73,6 +63,10 @@ const Brazil: React.FC = () => {
       }, []),
     },
   };
+
+  useEffect(() => {
+    if (mapContainerInformation) showContainerInformation();
+  }, [showContainerInformation, mapContainerInformation]);
 
   return <Geomap config={methodsGeo} />;
 };

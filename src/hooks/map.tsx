@@ -6,7 +6,7 @@ import municipios from '../data/municipios-pa.json';
 
 interface IMapContextData {
   mapContainerInformation: boolean;
-  showContainerInformation(): void;
+  showContainerInformation(showInformation?: boolean): void;
   loadInformation(cityName: string): void;
 }
 
@@ -31,26 +31,12 @@ const MapProvider: React.FC = ({ children }) => {
   const [mapContainerInformation, setMapContainerInformation] = useState(false);
   const [information, setInformation] = useState<IInformation>();
 
-  const showContainerInformation = useCallback((): void => {
+  const showContainerInformation = (): void => {
     setMapContainerInformation((state) => !state);
-  }, []);
-
-  // function hasKey<O>(obj: O, key: keyof any): key is keyof O {
-  //   return key in obj;
-  // }
+  };
 
   const loadInformation = useCallback((cityName: keyof IInformation) => {
-    // const leo = hasKey(municipios.cities, cityName);
-    // let secondValue: string = (someObject as any)[key];
-
-    console.log('Aquiiiiiiiiiii: ', Object.keys(municipios.cities));
-
-    // const leo = (municipios.cities as IInformation)[cityName];
-
-    // if (hasKey(municipios.cities, cityName)) {
-
-    //   // setInformation();
-    // }
+    return false;
   }, []);
 
   return (
