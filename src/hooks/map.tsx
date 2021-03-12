@@ -1,8 +1,6 @@
-import React, { createContext, useCallback, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 import propTypes from 'prop-types';
-
-import municipios from '../data/municipios-pa.json';
 
 interface IMapContextData {
   mapContainerInformation: boolean;
@@ -29,15 +27,14 @@ const MapContext = createContext<IMapContextData>({} as IMapContextData);
 
 const MapProvider: React.FC = ({ children }) => {
   const [mapContainerInformation, setMapContainerInformation] = useState(false);
-  const [information, setInformation] = useState<IInformation>();
 
   const showContainerInformation = (): void => {
     setMapContainerInformation((state) => !state);
   };
 
-  const loadInformation = useCallback((cityName: keyof IInformation) => {
+  const loadInformation = (cityName: keyof IInformation): boolean => {
     return false;
-  }, []);
+  };
 
   return (
     <MapContext.Provider

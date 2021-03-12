@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 import propTypes from 'prop-types';
 
@@ -35,9 +35,9 @@ const FilterProvider: React.FC = ({ children }) => {
     setFilterObject({ ...newFilters, ...data });
   };
 
-  const toFilter = useCallback(() => {
-    console.log(filterObject);
-  }, [filterObject]);
+  const toFilter = (): boolean => {
+    return false;
+  };
 
   return (
     <FilterContext.Provider value={{ filterObject, setFilter, toFilter }}>
