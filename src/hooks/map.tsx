@@ -1,31 +1,60 @@
-import React, { createContext, useCallback, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-interface IContainerInfo {
-  filterId: string;
-  showContainerInfo: boolean;
-}
+import propTypes from 'prop-types';
 
 interface IMapContextData {
-  mapInformation: object;
-  showInformation(dataInfo: IContainerInfo): void;
+  mapContainerInformation: boolean;
+  showContainerInformation(showInformation?: boolean): void;
+  loadInformation(cityName: string): void;
+}
+
+interface IIndexInformation {
+  descricao: string;
+  quantidade: number;
+  porcentagem: number;
+}
+
+interface IInformation {
+  [city: string]: {
+    pesoIdade: [data: IIndexInformation];
+    pesoAltura: [data: IIndexInformation];
+    alturaIdade: [data: IIndexInformation];
+    imcIdade: [data: IIndexInformation];
+  };
 }
 
 const MapContext = createContext<IMapContextData>({} as IMapContextData);
 
-const MapProvider: React.FC = () => {
-  const [mapInformation, setMapInformation] = useState({
-    filterId: '',
-    showContainerInfo: false,
-  });
+const MapProvider: React.FC = ({ children }) => {
+  const [mapContainerInformation, setMapContainerInformation] = useState(false);
 
-  const showInformation = useCallback(
-    ({ filterId, showContainerInfo }: IContainerInfo) => {
-      setMapInformation({ filterId, showContainerInfo });
-    },
-    [],
+  const showContainerInformation = (): void => {
+    setMapContainerInformation((state) => !state);
+  };
+
+  const loadInformation = (cityName: keyof IInformation): boolean => {
+    return false;
+  };
+
+  return (
+    <MapContext.Provider
+      value={{
+        mapContainerInformation,
+        showContainerInformation,
+        loadInformation,
+      }}
+    >
+      {children}
+    </MapContext.Provider>
   );
+};
 
-  return <MapContext.Provider value={{ mapInformation, showInformation }} />;
+MapProvider.propTypes = {
+  children: propTypes.node,
+};
+
+MapProvider.defaultProps = {
+  children: undefined,
 };
 
 function useMap(): IMapContextData {
@@ -34,4 +63,4 @@ function useMap(): IMapContextData {
   return context;
 }
 
-export { useMap };
+export { MapProvider, useMap };

@@ -1,10 +1,10 @@
-import React, { HTMLAttributes, useState } from 'react';
+import React, { HTMLAttributes, useEffect, useState } from 'react';
 
 import { FiChevronDown } from 'react-icons/fi';
 
-import { Container, ButtonBox, OptionsContainer, OptionButton } from './styles';
+import { useFilter } from '../../hooks/filter';
 
-type OptionsType = string | number;
+import { Container, ButtonBox, OptionsContainer, OptionButton } from './styles';
 
 type IContainerStyleProps = {
   button: object;
@@ -12,33 +12,43 @@ type IContainerStyleProps = {
 };
 
 interface IDropdownListProps extends HTMLAttributes<HTMLDivElement> {
-  placeholder: string;
   containerStyle?: IContainerStyleProps;
-  options: OptionsType[];
+  idFilter: string;
+  options: string[];
 }
 
 const DropdownList: React.FC<IDropdownListProps> = ({
-  placeholder,
   containerStyle = {
     button: Object,
     list: Object,
   },
+  idFilter,
   options,
   ...rest
 }: IDropdownListProps) => {
   const [hide, setHide] = useState(true);
-  const [selectedValue, setSelectedValue] = useState<OptionsType>(placeholder);
+  const [selectedValue, setSelectedValue] = useState<string>(options[0]);
 
   const { button, list } = containerStyle;
+  const { setFilter } = useFilter();
 
   const handleHide = (): void => {
     setHide(!hide);
   };
 
-  const handleChangeValue = (option: OptionsType): void => {
+  const handleSetOption = (
+    _: any,
+    idFilterOption: string,
+    option: string,
+  ): void => {
+    setFilter({ [idFilterOption]: option });
     setSelectedValue(option);
     setHide(!hide);
   };
+
+  useEffect(() => {
+    setFilter({ [idFilter]: selectedValue });
+  }, []);
 
   return (
     <Container {...rest}>
@@ -53,7 +63,7 @@ const DropdownList: React.FC<IDropdownListProps> = ({
               key={option}
               type="button"
               value={option}
-              onClick={() => handleChangeValue(option)}
+              onClick={(event) => handleSetOption(event, idFilter, option)}
             >
               {option}
             </OptionButton>
