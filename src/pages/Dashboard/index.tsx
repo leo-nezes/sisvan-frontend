@@ -11,6 +11,7 @@ import DropdownList from '../../Components/DropdownList';
 import Button from '../../Components/Button';
 import Brazil from '../../Components/GeoMap/Brazil';
 import Para from '../../Components/GeoMap/Para';
+import InformationContainer from '../../Components/InformationContainer';
 
 import { PDF } from '../../Components/PDF';
 
@@ -22,8 +23,6 @@ import {
   FilterBox,
   MapContainer,
   MapBox,
-  InformationContainer,
-  Description,
   PatientsData,
   RegionPeriod,
   StatisticalModels,
@@ -261,148 +260,150 @@ const Dashboard: React.FC = () => {
             {filterObject.localidade === 'Para' ? <Para /> : <Brazil />}
 
             {mapContainerInformation && (
-              <InformationContainer>
-                <BlobProvider document={PDF}>
-                  {({ url }) => (
-                    <div
-                      style={{
-                        width: '50%',
-                        padding: '8px',
-                        margin: '8px auto',
-                        borderRadius: '8px',
-                        background: '#00ab5c',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <a
-                        href={url != null ? url : ''}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: '#f6f4f8',
-                          textDecoration: 'none',
-                        }}
-                      >
-                        <FiPrinter
-                          style={{
-                            margin: 'auto 8px',
-                            fontSize: '18px',
-                            color: '#f6f4f8',
-                          }}
-                        />
-                        Gerar PDF
-                      </a>
-                    </div>
-                  )}
-                </BlobProvider>
+              <InformationContainer />
 
-                <h3>ABAETETUBA</h3>
-                <Description>Total: 5202 resultados</Description>
-                <h4>Peso X Idade</h4>
-                <hr />
-                <div>
-                  Peso muito baixo para a idade
-                  <p>Quantidade: 73</p>
-                  <p>Porcentagem: 1.4%</p>
-                </div>
-                <div>
-                  Peso baixo para a idade
-                  <p>Quantidade: 245</p>
-                  <p>Porcentagem: 4.71%</p>
-                </div>
-                <div>
-                  Peso adequado ou eutrófico
-                  <p>Quantidade: 4618</p>
-                  <p>Porcentagem: 88.77%</p>
-                </div>
-                <div>
-                  Peso elevado para a idade
-                  <p>Quantidade: 266</p>
-                  <p>Porcentagem: 5.11%</p>
-                </div>
+              // <InformationContainer>
+              //   <BlobProvider document={PDF}>
+              //     {({ url }) => (
+              //       <div
+              //         style={{
+              //           width: '50%',
+              //           padding: '8px',
+              //           margin: '8px auto',
+              //           borderRadius: '8px',
+              //           background: '#00ab5c',
+              //           cursor: 'pointer',
+              //         }}
+              //       >
+              //         <a
+              //           href={url != null ? url : ''}
+              //           target="_blank"
+              //           rel="noreferrer"
+              //           style={{
+              //             display: 'flex',
+              //             alignItems: 'center',
+              //             justifyContent: 'center',
+              //             color: '#f6f4f8',
+              //             textDecoration: 'none',
+              //           }}
+              //         >
+              //           <FiPrinter
+              //             style={{
+              //               margin: 'auto 8px',
+              //               fontSize: '18px',
+              //               color: '#f6f4f8',
+              //             }}
+              //           />
+              //           Gerar PDF
+              //         </a>
+              //       </div>
+              //     )}
+              //   </BlobProvider>
 
-                <h4>Peso X Altura</h4>
-                <hr />
-                <div>
-                  Magreza acentuada
-                  <p>Quantidade: 136</p>
-                  <p>Porcentagem: 2.61%</p>
-                </div>
-                <div>
-                  Magreza
-                  <p>Quantidade: 166</p>
-                  <p>Porcentagem: 3.19%</p>
-                </div>
-                <div>
-                  Peso adequado ou eutrófico
-                  <p>Quantidade: 3191</p>
-                  <p>Porcentagem: 61.34%</p>
-                </div>
-                <div>
-                  Risco de sobrepeso
-                  <p>Quantidade: 399</p>
-                  <p>Porcentagem: 7.67%</p>
-                </div>
-                <div>
-                  Obesidade
-                  <p>Quantidade: 362</p>
-                  <p>Porcentagem: 6.96%</p>
-                </div>
+              //   <h3>ABAETETUBA</h3>
+              //   <Description>Total: 5202 resultados</Description>
+              //   <h4>Peso X Idade</h4>
+              //   <hr />
+              //   <div>
+              //     Peso muito baixo para a idade
+              //     <p>Quantidade: 73</p>
+              //     <p>Porcentagem: 1.4%</p>
+              //   </div>
+              //   <div>
+              //     Peso baixo para a idade
+              //     <p>Quantidade: 245</p>
+              //     <p>Porcentagem: 4.71%</p>
+              //   </div>
+              //   <div>
+              //     Peso adequado ou eutrófico
+              //     <p>Quantidade: 4618</p>
+              //     <p>Porcentagem: 88.77%</p>
+              //   </div>
+              //   <div>
+              //     Peso elevado para a idade
+              //     <p>Quantidade: 266</p>
+              //     <p>Porcentagem: 5.11%</p>
+              //   </div>
 
-                <h4>Altura X Idade</h4>
-                <hr />
-                <div>
-                  Altura muito baixa para a idade
-                  <p>Quantidade: 487</p>
-                  <p>Porcentagem: 9.36%</p>
-                </div>
-                <div>
-                  Altura baixa para a idade
-                  <p>Quantidade: 717</p>
-                  <p>Porcentagem: 13.78%</p>
-                </div>
-                <div>
-                  Altura adequada para a idade
-                  <p>Quantidade: 3998</p>
-                  <p>Porcentagem: 76.86%</p>
-                </div>
+              //   <h4>Peso X Altura</h4>
+              //   <hr />
+              //   <div>
+              //     Magreza acentuada
+              //     <p>Quantidade: 136</p>
+              //     <p>Porcentagem: 2.61%</p>
+              //   </div>
+              //   <div>
+              //     Magreza
+              //     <p>Quantidade: 166</p>
+              //     <p>Porcentagem: 3.19%</p>
+              //   </div>
+              //   <div>
+              //     Peso adequado ou eutrófico
+              //     <p>Quantidade: 3191</p>
+              //     <p>Porcentagem: 61.34%</p>
+              //   </div>
+              //   <div>
+              //     Risco de sobrepeso
+              //     <p>Quantidade: 399</p>
+              //     <p>Porcentagem: 7.67%</p>
+              //   </div>
+              //   <div>
+              //     Obesidade
+              //     <p>Quantidade: 362</p>
+              //     <p>Porcentagem: 6.96%</p>
+              //   </div>
 
-                <h4>IMC X Idade</h4>
-                <hr />
-                <div>
-                  Magreza acentuada
-                  <p>Quantidade: 180</p>
-                  <p>Porcentagem: 3.46%</p>
-                </div>
-                <div>
-                  Magreza
-                  <p>Quantidade: 168</p>
-                  <p>Porcentagem: 3.23%</p>
-                </div>
-                <div>
-                  Eutrofia
-                  <p>Quantidade: 2964</p>
-                  <p>Porcentagem: 56.98%</p>
-                </div>
-                <div>
-                  Risco de sobrepeso
-                  <p>Quantidade: 1.035</p>
-                  <p>Porcentagem: 19.9%</p>
-                </div>
-                <div>
-                  Sobrepeso
-                  <p>Quantidade: 466</p>
-                  <p>Porcentagem: 8.96%</p>
-                </div>
-                <div>
-                  Obesidade
-                  <p>Quantidade: 389</p>
-                  <p>Porcentagem: 7.48%</p>
-                </div>
-              </InformationContainer>
+              //   <h4>Altura X Idade</h4>
+              //   <hr />
+              //   <div>
+              //     Altura muito baixa para a idade
+              //     <p>Quantidade: 487</p>
+              //     <p>Porcentagem: 9.36%</p>
+              //   </div>
+              //   <div>
+              //     Altura baixa para a idade
+              //     <p>Quantidade: 717</p>
+              //     <p>Porcentagem: 13.78%</p>
+              //   </div>
+              //   <div>
+              //     Altura adequada para a idade
+              //     <p>Quantidade: 3998</p>
+              //     <p>Porcentagem: 76.86%</p>
+              //   </div>
+
+              //   <h4>IMC X Idade</h4>
+              //   <hr />
+              //   <div>
+              //     Magreza acentuada
+              //     <p>Quantidade: 180</p>
+              //     <p>Porcentagem: 3.46%</p>
+              //   </div>
+              //   <div>
+              //     Magreza
+              //     <p>Quantidade: 168</p>
+              //     <p>Porcentagem: 3.23%</p>
+              //   </div>
+              //   <div>
+              //     Eutrofia
+              //     <p>Quantidade: 2964</p>
+              //     <p>Porcentagem: 56.98%</p>
+              //   </div>
+              //   <div>
+              //     Risco de sobrepeso
+              //     <p>Quantidade: 1.035</p>
+              //     <p>Porcentagem: 19.9%</p>
+              //   </div>
+              //   <div>
+              //     Sobrepeso
+              //     <p>Quantidade: 466</p>
+              //     <p>Porcentagem: 8.96%</p>
+              //   </div>
+              //   <div>
+              //     Obesidade
+              //     <p>Quantidade: 389</p>
+              //     <p>Porcentagem: 7.48%</p>
+              //   </div>
+              // </InformationContainer>
             )}
           </MapBox>
         </MapContainer>
